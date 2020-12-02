@@ -1,11 +1,13 @@
 <?php
 
-class Api_model extends CI_Model {
+class Api_model extends CI_Model
+{
 
     //public $name;
     //public $description;
 
-    public function __construct() {
+    public function __construct()
+    {
         parent::__construct();
     }
 
@@ -17,14 +19,15 @@ class Api_model extends CI_Model {
      */
 
     // ==============================================================================================
-    public function get_admit() {
+    public function get_admit()
+    {
 
 
         $curl = curl_init();
 
         curl_setopt_array($curl, array(
             CURLOPT_PORT => "3001",
-            CURLOPT_URL => "getenv('EMR_API_URL') . "/api/admits",
+            CURLOPT_URL => (getenv('EMR_API_URL') || "localhost:3001") . "/api/admits",
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING => "",
             CURLOPT_MAXREDIRS => 10,

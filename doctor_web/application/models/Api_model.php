@@ -162,7 +162,7 @@ class Api_model extends CI_Model
         $curl = curl_init();
         $hn = $_POST[hn];
         $emr = $_POST[emr];
-        $url = "getenv('EMR_API_URL') . "/api/" . $hn . "/dispense/" . $emr;
+        $url = (getenv('EMR_API_URL') || "localhost:3001") . "/api/" . $hn . "/dispense/" . $emr;
         curl_setopt_array($curl, array(
             CURLOPT_PORT => "3001",
             CURLOPT_URL => $url,
