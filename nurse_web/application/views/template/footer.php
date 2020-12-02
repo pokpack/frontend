@@ -77,6 +77,29 @@
 <!-- init js -->
 <script src="<?= base_url(); ?>assets/js/pages/form-advanced.init.js"></script>
 <script src="<?= base_url(); ?>assets/js/script.js"></script>
+
+<!-- Sweet Alerts js -->
+<script src="<?= base_url(); ?>assets/libs/sweetalert2/sweetalert2.min.js"></script>
+
+<!-- Sweet alert init js-->
+<script src="<?= base_url(); ?>assets/js/pages/sweet-alerts.init.js"></script>
+<?php
+if ($this->session->userdata('savedata') == 1) {
+//            echo $this->session->userdata('savedata');
+    ?>
+    <script>
+        Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Your data has been saved",
+            showConfirmButton: !1,
+            timer: 1500
+        });
+    </script>
+    <?php
+    $this->session->set_userdata(array('savedata' => ''));
+}
+?>
 </body>
 
 <script>

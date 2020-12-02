@@ -40,6 +40,7 @@ define('PREFIX_ACCINVOICE', '12');
 define('TBL_USER_TYPE', 'user_type');
 define('TBL_USER', 'user');
 define('TBL_PATIEN', 'patient');
+define('TBL_CONFIG', 'config');
 
 
 

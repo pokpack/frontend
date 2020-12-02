@@ -62,6 +62,10 @@
                     <div class="card">
                         <div class="card-body">
                             <div style="margin-bottom: 20px;" align="center">
+                                <?php
+                                $ob = json_decode($data);
+//                                print_r($ob);
+                                ?>
                                 <a>
                                     <button type="button" class="btn btn-success btn-rounded waves-effect waves-light" data-toggle="modal" data-target="#lg_modal" style="width: 200px;">
                                         <i class="fas fa-plus"></i>&nbsp;&nbsp;Admit
@@ -103,6 +107,7 @@
                                                 <thead>
                                                     <tr>
                                                         <th>#</th>
+                                                        <th>HN Id</th>
                                                         <th>Name</th>
                                                         <th>Severity</th>
                                                         <th>Date</th>
@@ -111,22 +116,29 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <tr>
-                                                        <td>1</td>
-                                                        <td>Testname 01</td>
-                                                        <td>5</td>
-                                                        <td>2020-11-25 16:00:00</td>
-                                                        <td>Have a high fever</td>
-                                                        <td><i class="fas fa-check"></i></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>2</td>
-                                                        <td>Testname 02</td>
-                                                        <td>5</td>
-                                                        <td>2020-11-25 16:00:00</td>
-                                                        <td>Have a high fever</td>
-                                                        <td><i class="fas fa-check"></i></td>
-                                                    </tr>
+                                                    <?php
+                                                    $num1 = 0;
+                                                    foreach ($ob as $key => $val) {
+
+                                                        $_where = array('i_hn' => $val->hn);
+                                                        $_select = array('i_hn,s_first_name,s_last_name');
+//                                                        print_r($_where);
+                                                        $user = $this->Main_model->rowdata(TBL_PATIEN, $_where, $_select);
+
+                                                        $date = date_create($val->datetime);
+                                                        $datetime = date_format($date, "Y-m-d H:i:s");
+                                                        ?>
+                                                        <tr>
+                                                            <td><?= $num1 += 1; ?></td>
+                                                            <td style="text-align: center;"><?= $user->i_hn; ?></td>
+                                                            <td><?= $user->s_first_name . " " . $user->s_last_name; ?></td>
+                                                            <td style="text-align: center;"><?= $val->level; ?></td>
+                                                            <td><?= $datetime; ?></td>
+                                                            <td><?= $val->symptoms; ?></td>
+                                                            <td><i class="fas fa-check"></i></td>
+                                                        </tr>
+                                                    <?php }
+                                                    ?>
                                                 </tbody>
                                             </table>
                                         </div>
@@ -139,6 +151,7 @@
                                         <thead>
                                             <tr>
                                                 <th>#</th>
+                                                <th>HN Id</th>
                                                 <th>Name</th>
                                                 <th>Severity</th>
                                                 <th>Date</th>
@@ -149,34 +162,35 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td>1</td>
-                                                <td>Testname 01</td>
-                                                <td>5</td>
-                                                <td>2020-11-25 16:00:00</td>
-                                                <td>Have a high fever</td>
-                                                <td>Doctor01</td>
-                                                <td><i class="fas fa-check"></i></td>
-                                                <td>
-                                                    <button type="button" class="btn btn-danger  btn-sm waves-effect waves-light">
-                                                        <i class="fas fa-user-edit"></i>
-                                                    </button>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>2</td>
-                                                <td>Testname 02</td>
-                                                <td>5</td>
-                                                <td>2020-11-25 16:00:00</td>
-                                                <td>Have a high fever</td>
-                                                <td>Doctor01</td>
-                                                <td><i class="fas fa-check"></i></td>
-                                                <td>
-                                                    <button type="button" class="btn btn-danger  btn-sm waves-effect waves-light">
-                                                        <i class="fas fa-user-edit"></i>
-                                                    </button>
-                                                </td>
-                                            </tr>
+                                            <?php
+                                            $num2 = 0;
+                                            foreach ($ob as $key => $val) {
+
+                                                $_where = array('i_hn' => $val->hn);
+                                                $_select = array('i_hn,s_first_name,s_last_name');
+//                                                        print_r($_where);
+                                                $user = $this->Main_model->rowdata(TBL_PATIEN, $_where, $_select);
+
+                                                $date = date_create($val->datetime);
+                                                $datetime = date_format($date, "Y-m-d H:i:s");
+                                                ?>
+                                                <tr>
+                                                    <td><?= $num2 += 1; ?></td>
+                                                    <td style="text-align: center;"><?= $user->i_hn; ?></td>
+                                                    <td><?= $user->s_first_name . " " . $user->s_last_name; ?></td>
+                                                    <td style="text-align: center;"><?= $val->level; ?></td>
+                                                    <td><?= $datetime; ?></td>
+                                                    <td><?= $val->symptoms; ?></td>
+                                                    <td><?= $val->doctor; ?></td>
+                                                    <td><i class="fas fa-check"></i></td>
+                                                    <td>
+                                                        <button type="button" class="btn btn-danger  btn-sm waves-effect waves-light" onclick="">
+                                                            <i class="fas fa-user-edit"></i>
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                            <?php }
+                                            ?>
                                         </tbody>
                                     </table>
                                     </p>
@@ -187,35 +201,32 @@
                                         <thead>
                                             <tr>
                                                 <th>#</th>
-                                                <th>Name</th>
                                                 <th>HN ID</th>
-                                                <th>Symptom</th>
+                                                <th>Name</th>
                                                 <th>History</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td>1</td>
-                                                <td>Testname 01</td>
-                                                <td>1</td>
-                                                <td>Have a high fever</td>
-                                                <td>
-                                                    <button type="button" class="btn btn-light btn-sm waves-effect waves-light">
-                                                        <i class="fas fa-eye"></i>
-                                                    </button>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>2</td>
-                                                <td>Testname 02</td>
-                                                <td>2</td>
-                                                <td>Have a high fever</td>
-                                                <td>
-                                                    <button type="button" class="btn btn-light btn-sm waves-effect waves-light">
-                                                        <i class="fas fa-eye"></i>
-                                                    </button>
-                                                </td>
-                                            </tr>
+                                            <?php
+                                            $num3 = 0;
+                                            $_where = array();
+                                            $_select = array('*');
+                                            $pt = $this->Main_model->fetch_data('', '', TBL_PATIEN, $_where, $_select);
+                                            foreach ($pt as $key => $val) {
+                                                ?>
+                                                <tr>
+                                                    <td><?= $num3 += 1; ?></td>
+                                                    <td style="text-align: center;"><?= $val->i_hn; ?></td>
+                                                    <td><?= $val->s_first_name . " " . $val->s_last_name; ?></td>
+                                                    <td>
+                                                        <button type="button" class="btn btn-light btn-sm waves-effect waves-light">
+                                                            <i class="fas fa-eye"></i>
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                                <?php
+                                            }
+                                            ?>
                                         </tbody>
                                     </table>
                                 </div>
@@ -262,6 +273,7 @@
             </div>
             <div class="modal-body">
                 <form id="form_admit" method="post">
+                    <input type="hidden" value="<?= $this->session->userdata('user_id'); ?>" name="nurse_record" />
                     <div class="" style="padding: 15px; ">
                         <div class="form-group row">
                             <label for="example-datetime-local-input" 
@@ -290,7 +302,7 @@
                             <label for="d_date" class="col-md-2 col-form-label">Date and time</label>
                             <div class="col-md-10">
                                 <!--<input class="form-control" type="datetime-local" value="<?= date(); ?>" name="date" id="d_date">-->
-                                <input class="form-control" type="datetime-local" value="2019-08-19T13:45:00" id="example-datetime-local-input">
+                                <input class="form-control" type="datetime-local" value="2019-08-19T13:45:00" id="example-datetime-local-input" name="datetime">
                             </div>
                         </div>
                         <div class="form-group row">
