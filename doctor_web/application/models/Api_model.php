@@ -24,7 +24,7 @@ class Api_model extends CI_Model {
 
         curl_setopt_array($curl, array(
             CURLOPT_PORT => "3001",
-            CURLOPT_URL => "http://localhost:3001/api/admits",
+            CURLOPT_URL => "http://localhost:3001/api/cures",
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING => "",
             CURLOPT_MAXREDIRS => 10,
@@ -92,7 +92,7 @@ class Api_model extends CI_Model {
 
         $hn = $_POST[hn];
         $emr = $_POST[emr];
-        $url = "http://localhost:3001/api/" . $hn . "/examination/" . $emr;
+        $url = "http://localhost:3001/api/" . $hn . "/cure/" . $emr;
         curl_setopt_array($curl, array(
             CURLOPT_PORT => "3001",
             CURLOPT_URL => $url,
@@ -125,7 +125,7 @@ class Api_model extends CI_Model {
     public function get_dispenses() {
 
         $curl = curl_init();
-        $url = "http://localhost:3001/api/treats";
+        $url = "http://localhost:3001/api/diagnoses";
         curl_setopt_array($curl, array(
             CURLOPT_PORT => "3001",
             CURLOPT_URL => $url,
@@ -155,7 +155,7 @@ class Api_model extends CI_Model {
         $curl = curl_init();
         $hn = $_POST[hn];
         $emr = $_POST[emr];
-        $url = "http://localhost:3001/api/".$hn."/dispense/".$emr;
+        $url = "http://localhost:3001/api/".$hn."/diagnose/".$emr;
         curl_setopt_array($curl, array(
             CURLOPT_PORT => "3001",
             CURLOPT_URL => $url,

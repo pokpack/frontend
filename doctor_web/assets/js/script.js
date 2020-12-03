@@ -113,8 +113,8 @@ function submit_treat() {
             type: 'post',
             success: function (res) {
                 console.log(res);
-//                t.value && Swal.fire("Success!", "Your file has been deleted.", "success");
-//                window.location.reload();
+                t.value && Swal.fire("Success!", "Your file has been deleted.", "success");
+                window.location.reload();
             },
             error: function (e) {
                 console.log(e)

@@ -84,9 +84,9 @@
                                             to make them scroll horizontally on small devices (under 768px).-->
                                         </p>
                                         <?php
-                                        echo "<pre>";
-                                        print_r($data);
-                                        echo "</pre>";
+//                                        echo "<pre>";
+//                                        print_r($data);
+//                                        echo "</pre>";
                                         ?>
                                         <div class="table-responsive">
                                             <table class="table mb-0">

@@ -20,7 +20,7 @@ class Api_model extends CI_Model {
     public function get_exn() {
 
         $curl = curl_init();
-        $url = "http://localhost:3001/api/examinations";
+        $url = "http://localhost:3001/api/dispenses";
 
         curl_setopt_array($curl, array(
             CURLOPT_PORT => "3001",
