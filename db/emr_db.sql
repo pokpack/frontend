@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Nov 27, 2020 at 08:46 AM
+-- Generation Time: Dec 03, 2020 at 08:52 AM
 -- Server version: 5.7.15-log
 -- PHP Version: 7.0.11
 
@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `emr_db`
+-- Database: `emr`
 --
 
 -- --------------------------------------------------------
@@ -37,8 +37,30 @@ CREATE TABLE `config` (
 --
 
 INSERT INTO `config` (`id`, `s_emr`, `s_value`) VALUES
-(1, 'emr_id', '1'),
+(1, 'emr_id', '4'),
 (2, 'token', 'x]vf4yp0yf');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `diagnosis`
+--
+
+CREATE TABLE `diagnosis` (
+  `id` int(10) NOT NULL,
+  `s_name` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `i_status` tinyint(1) NOT NULL DEFAULT '1'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `diagnosis`
+--
+
+INSERT INTO `diagnosis` (`id`, `s_name`, `i_status`) VALUES
+(1, 'Back home', 1),
+(2, 'Forward', 1),
+(3, 'Enter the ward', 1),
+(4, 'Dead (Discharg refer admit dea)', 1);
 
 -- --------------------------------------------------------
 
@@ -93,6 +115,10 @@ CREATE TABLE `patient` (
   `s_province` varchar(100) COLLATE utf8_unicode_ci NOT NULL COMMENT 'จังหวัด',
   `s_postal` varchar(100) COLLATE utf8_unicode_ci NOT NULL COMMENT 'รหัสไปรษณีย์',
   `s_phone` varchar(20) COLLATE utf8_unicode_ci NOT NULL COMMENT 'โทรศัพท์',
+  `i_weight` int(20) NOT NULL,
+  `i_height` int(20) NOT NULL,
+  `s_allergy` text COLLATE utf8_unicode_ci NOT NULL COMMENT 'การแพ้ยา',
+  `s_disease` text COLLATE utf8_unicode_ci NOT NULL COMMENT 'โรคประจำตัว',
   `d_post_date` datetime NOT NULL,
   `i_status` tinyint(1) NOT NULL DEFAULT '1'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -101,9 +127,9 @@ CREATE TABLE `patient` (
 -- Dumping data for table `patient`
 --
 
-INSERT INTO `patient` (`id`, `i_hn`, `s_first_name`, `s_last_name`, `s_noun`, `s_gender`, `d_birthday`, `s_idcard`, `s_blood`, `s_marital`, `s_race`, `s_education`, `s_religion`, `s_house_no`, `s_moo`, `s_soi`, `s_road`, `s_subdistrict`, `s_district`, `s_province`, `s_postal`, `s_phone`, `d_post_date`, `i_status`) VALUES
-(1, 1, 'Phanupong', 'Ninhat', 'Mr.', 'Male', '1993-10-01', '1839900312881', 'o', 'Single', 'Thai', 'Bachelor\'s degree', 'Buddhism', '13/2', '1', '-', 'Thepprathan', 'Ratsada', 'Mueang', 'Phuket', '83000', '0952683555', '2020-11-25 00:00:00', 1),
-(2, 2, 'Test_p', '01', 'Mr.', 'Male', '1993-10-01', '1839905219520', 'o', 'Single', 'Thai', 'Bachelor\'s degree', 'Buddhism', '13/2', '1', '-', 'Thepprathan', 'Ratsada', 'Mueang', 'Phuket', '83000', '0952683555', '2020-11-25 00:00:00', 1);
+INSERT INTO `patient` (`id`, `i_hn`, `s_first_name`, `s_last_name`, `s_noun`, `s_gender`, `d_birthday`, `s_idcard`, `s_blood`, `s_marital`, `s_race`, `s_education`, `s_religion`, `s_house_no`, `s_moo`, `s_soi`, `s_road`, `s_subdistrict`, `s_district`, `s_province`, `s_postal`, `s_phone`, `i_weight`, `i_height`, `s_allergy`, `s_disease`, `d_post_date`, `i_status`) VALUES
+(1, 1, 'Testfirstname', 'Testlastname', 'Mr.', 'Male', '1993-10-01', '1839900312881', 'o', 'Single', 'Thai', 'Bachelor\'s degree', 'Buddhism', '13/2', '1', '-', 'Thepprathan', 'Ratsada', 'Mueang', 'Phuket', '83000', '0952683555', 62, 175, '-', '-', '2020-11-25 00:00:00', 1),
+(2, 2, 'Test_p', '01', 'Mr.', 'Male', '1993-10-01', '1839905219520', 'o', 'Single', 'Thai', 'Bachelor\'s degree', 'Buddhism', '13/2', '1', '-', 'Thepprathan', 'Ratsada', 'Mueang', 'Phuket', '83000', '0952683555', 75, 180, '-', '-', '2020-11-25 00:00:00', 1);
 
 -- --------------------------------------------------------
 
@@ -151,9 +177,10 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `s_first_name`, `s_last_name`, `s_email`, `i_type`, `s_username`, `s_password`, `i_status`, `d_post_date`, `d_last_update`) VALUES
-(1, 'Phanupong', 'Ninhat', 'test@test.com', 1, 'test_p1', '123', 1, '2020-11-25 00:00:00', '2020-11-25 00:00:00'),
-(2, 'Nurse', '01', 'test01@test.gmail', 2, 'nurse_01', '123', 1, '2020-11-25 00:00:00', '2020-11-25 00:00:00'),
-(3, 'Doctor', '01', 'test@test.com', 3, 'doctor_01', '123', 1, '2020-11-27 00:00:00', '2020-11-27 00:00:00');
+(1, 'Testfirstname', 'Testlastname', 'test@test.com', 1, 'test_p1', '123', 1, '2020-11-25 00:00:00', '2020-11-25 00:00:00'),
+(2, 'Nurse', '01', 'test@test.com', 2, 'nurse_01', '123', 1, '2020-11-25 00:00:00', '2020-11-25 00:00:00'),
+(3, 'Doctor', '01', 'test@test.com', 3, 'doctor_01', '123', 1, '2020-11-27 00:00:00', '2020-11-27 00:00:00'),
+(4, 'Pharmacist', '01', 'test@test.com', 4, 'phc_01', '123', 1, '2020-11-28 00:00:00', '2020-11-28 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -188,6 +215,12 @@ INSERT INTO `user_type` (`id`, `s_name`, `s_table`, `i_status`, `d_post_date`, `
 -- Indexes for table `config`
 --
 ALTER TABLE `config`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `diagnosis`
+--
+ALTER TABLE `diagnosis`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -230,6 +263,11 @@ ALTER TABLE `user_type`
 ALTER TABLE `config`
   MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
+-- AUTO_INCREMENT for table `diagnosis`
+--
+ALTER TABLE `diagnosis`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+--
 -- AUTO_INCREMENT for table `drug`
 --
 ALTER TABLE `drug`
@@ -248,7 +286,7 @@ ALTER TABLE `status`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `user_type`
 --
