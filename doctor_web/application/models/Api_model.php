@@ -1,13 +1,11 @@
 <?php
 
-class Api_model extends CI_Model
-{
+class Api_model extends CI_Model {
 
     //public $name;
     //public $description;
 
-    public function __construct()
-    {
+    public function __construct() {
         parent::__construct();
     }
 
@@ -19,15 +17,14 @@ class Api_model extends CI_Model
      */
 
     // ==============================================================================================
-    public function get_admit()
-    {
+    public function get_admit() {
 
 
         $curl = curl_init();
 
         curl_setopt_array($curl, array(
             CURLOPT_PORT => "3001",
-            CURLOPT_URL => getenv('EMR_API_URL') . "/api/admits",
+            CURLOPT_URL => "http://localhost:3001/api/admits",
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING => "",
             CURLOPT_MAXREDIRS => 10,
@@ -49,14 +46,13 @@ class Api_model extends CI_Model
         return $response;
     }
 
-    public function get_admit_id($hn, $emr)
-    {
+    public function get_admit_id($hn, $emr) {
 
         $curl = curl_init();
 
         curl_setopt_array($curl, array(
             CURLOPT_PORT => "3001",
-            CURLOPT_URL => getenv('EMR_API_URL') . "api/" . $hn . "/emr/" . $emr,
+            CURLOPT_URL => "http://localhost:3001/api/" . $hn . "/emr/" . $emr,
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING => "",
             CURLOPT_MAXREDIRS => 10,
@@ -78,8 +74,7 @@ class Api_model extends CI_Model
         return $response;
     }
 
-    public function post_exn()
-    {
+    public function post_exn() {
 
         $drug = array();
         foreach ($_POST[drug][id] as $key => $val) {
@@ -97,7 +92,7 @@ class Api_model extends CI_Model
 
         $hn = $_POST[hn];
         $emr = $_POST[emr];
-        $url = getenv('EMR_API_URL') . "/api/" . $hn . "/examination/" . $emr;
+        $url = "http://localhost:3001/api/" . $hn . "/examination/" . $emr;
         curl_setopt_array($curl, array(
             CURLOPT_PORT => "3001",
             CURLOPT_URL => $url,
@@ -127,11 +122,10 @@ class Api_model extends CI_Model
         return $return;
     }
 
-    public function get_dispenses()
-    {
+    public function get_dispenses() {
 
         $curl = curl_init();
-        $url = getenv('EMR_API_URL') . "/api/dispenses";
+        $url = "http://localhost:3001/api/treats";
         curl_setopt_array($curl, array(
             CURLOPT_PORT => "3001",
             CURLOPT_URL => $url,
@@ -156,13 +150,12 @@ class Api_model extends CI_Model
         return $response;
     }
 
-    public function post_treat()
-    {
+    public function post_treat() {
 
         $curl = curl_init();
         $hn = $_POST[hn];
         $emr = $_POST[emr];
-        $url = (getenv('EMR_API_URL') || "localhost:3001") . "/api/" . $hn . "/dispense/" . $emr;
+        $url = "http://localhost:3001/api/".$hn."/dispense/".$emr;
         curl_setopt_array($curl, array(
             CURLOPT_PORT => "3001",
             CURLOPT_URL => $url,

@@ -80,21 +80,43 @@
                                     </a>
                                 </li>
                                 <li class="nav-item waves-effect waves-light">
-                                    <a class="nav-link" data-toggle="tab" href="#navpills-profile" role="tab">
+                                    <a class="nav-link" data-toggle="tab" href="#navpills-profile" role="tab"  onclick="tabTreat();">
                                         <span class="d-block d-sm-none"><i class="far fa-user"></i></span>
                                         <span class="d-none d-sm-block">Treat</span> 
                                     </a>
                                 </li>
-                                <li class="nav-item waves-effect waves-light">
-                                    <a class="nav-link" data-toggle="tab" href="#navpills-messages" role="tab">
+<!--                                <li class="nav-item waves-effect waves-light">
+                                    <a class="nav-link" data-toggle="tab" href="#navpills-messages" role="tab" onclick="tabHistory();">
                                         <span class="d-block d-sm-none"><i class="far fa-envelope"></i></span>
                                         <span class="d-none d-sm-block">History</span>   
                                     </a>
-                                </li>
+                                </li>-->
                             </ul>
 
                             <div class="tab-content p-3 text-muted">
                                 <div class="tab-pane active" id="navpills-home" role="tabpanel">
+                                    <div style="margin: 10px;">
+                                        <div data-repeater-list="group-a">
+                                            <div data-repeater-item="" class="row">
+                                                <div class="form-group col-lg-2">
+                                                    <label for="emrId">EMR Id</label>
+                                                    <input type="number" id="emr" name="emrId" class="form-control" onkeyup="searchEmr(this.value,'admit');">
+                                                </div>
+
+                                                <div class="form-group col-lg-2">
+                                                    <label for="hn">HN</label>
+                                                    <input type="number" id="hn" class="form-control"  onkeyup="searchHn(this.value,'admit');">
+                                                </div>
+
+                                                <div class="form-group col-lg-2">
+                                                    <label for="subject">Severity</label>
+                                                    <input type="text" id="severity" name="severity" class="form-control" onkeyup="searchSeverity(this.value,'admit');">
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
                                     <div style="margin: 10px;">
                                         <h4 class="card-title">Admit list table</h4>
                                         <p class="card-title-desc">
@@ -112,7 +134,8 @@
                                                         <th>Severity</th>
                                                         <th>Date</th>
                                                         <th>Symptom</th>
-                                                        <th>Status</th>
+                                                        <th style="text-align: center;">Status</th>
+                                                        <th style="text-align: center;">EMR Id</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -128,17 +151,19 @@
                                                         $date = date_create($val->datetime);
                                                         $datetime = date_format($date, "Y-m-d H:i:s");
                                                         ?>
-                                                        <tr>
+                                                        <tr id="tr_admit_<?= $val->id; ?>" class="tr-admit">
+                                                            <input type="hidden" value="<?= $val->id;?>" />
                                                             <td><?= $num1 += 1; ?></td>
-                                                            <td style="text-align: center;"><?= $user->i_hn; ?></td>
+                                                            <td style="text-align: center;"><span data-id="<?= $val->id; ?>" class="text-admit-hn"><?= $user->i_hn; ?></span></td>
                                                             <td><?= $user->s_first_name . " " . $user->s_last_name; ?></td>
-                                                            <td style="text-align: center;"><?= $val->level; ?></td>
+                                                            <td style="text-align: center;"><span data-id="<?= $val->id; ?>" class="text-admit-sev"><?= $val->level; ?></span></td>
                                                             <td><?= $datetime; ?></td>
                                                             <td><?= $val->symptoms; ?></td>
-                                                            <td><i class="fas fa-check"></i></td>
+                                                            <td style="text-align: center;"><i class="fas fa-check"></i></td>
+                                                            <td style="text-align: center;"><span data-id="<?= $val->id; ?>" class="text-admit-emr"><?= $val->emrId; ?></span></td>
                                                         </tr>
-                                                    <?php }
-                                                    ?>
+                                                <?php }
+                                                ?>
                                                 </tbody>
                                             </table>
                                         </div>
@@ -146,90 +171,16 @@
                                 </div>
 
                                 <div class="tab-pane" id="navpills-profile" role="tabpanel">
-                                    <p class="mb-0">
-                                    <table class="table mb-0">
-                                        <thead>
-                                            <tr>
-                                                <th>#</th>
-                                                <th>HN Id</th>
-                                                <th>Name</th>
-                                                <th>Severity</th>
-                                                <th>Date</th>
-                                                <th>Symptom</th>
-                                                <th>Doctor</th>
-                                                <th>Status</th>
-                                                <th>Treat</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <?php
-                                            $num2 = 0;
-                                            foreach ($ob as $key => $val) {
-
-                                                $_where = array('i_hn' => $val->hn);
-                                                $_select = array('i_hn,s_first_name,s_last_name');
-//                                                        print_r($_where);
-                                                $user = $this->Main_model->rowdata(TBL_PATIEN, $_where, $_select);
-
-                                                $date = date_create($val->datetime);
-                                                $datetime = date_format($date, "Y-m-d H:i:s");
-                                                ?>
-                                                <tr>
-                                                    <td><?= $num2 += 1; ?></td>
-                                                    <td style="text-align: center;"><?= $user->i_hn; ?></td>
-                                                    <td><?= $user->s_first_name . " " . $user->s_last_name; ?></td>
-                                                    <td style="text-align: center;"><?= $val->level; ?></td>
-                                                    <td><?= $datetime; ?></td>
-                                                    <td><?= $val->symptoms; ?></td>
-                                                    <td><?= $val->doctor; ?></td>
-                                                    <td><i class="fas fa-check"></i></td>
-                                                    <td>
-                                                        <button type="button" class="btn btn-danger  btn-sm waves-effect waves-light" onclick="">
-                                                            <i class="fas fa-user-edit"></i>
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                            <?php }
-                                            ?>
-                                        </tbody>
-                                    </table>
-                                    </p>
+                                    <div class="tab-pane active" role="tabpanel" id="body_tab_treat">
+                                        xx
+                                    </div>
                                 </div>
 
-                                <div class="tab-pane" id="navpills-messages" role="tabpanel">
-                                    <table class="table mb-0">
-                                        <thead>
-                                            <tr>
-                                                <th>#</th>
-                                                <th>HN ID</th>
-                                                <th>Name</th>
-                                                <th>History</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <?php
-                                            $num3 = 0;
-                                            $_where = array();
-                                            $_select = array('*');
-                                            $pt = $this->Main_model->fetch_data('', '', TBL_PATIEN, $_where, $_select);
-                                            foreach ($pt as $key => $val) {
-                                                ?>
-                                                <tr>
-                                                    <td><?= $num3 += 1; ?></td>
-                                                    <td style="text-align: center;"><?= $val->i_hn; ?></td>
-                                                    <td><?= $val->s_first_name . " " . $val->s_last_name; ?></td>
-                                                    <td>
-                                                        <button type="button" class="btn btn-light btn-sm waves-effect waves-light">
-                                                            <i class="fas fa-eye"></i>
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                                <?php
-                                            }
-                                            ?>
-                                        </tbody>
-                                    </table>
-                                </div>
+<!--                                <div class="tab-pane" id="navpills-messages" role="tabpanel" >
+                                    <div class="tab-pane active" role="tabpanel" id="body_tab_his">
+                                    ...
+                                    </div>
+                                </div>-->
 
                             </div>
 
@@ -302,7 +253,7 @@
                             <label for="d_date" class="col-md-2 col-form-label">Date and time</label>
                             <div class="col-md-10">
                                 <!--<input class="form-control" type="datetime-local" value="<?= date(); ?>" name="date" id="d_date">-->
-                                <input class="form-control" type="datetime-local" value="2019-08-19T13:45:00" id="example-datetime-local-input" name="datetime">
+                                <input class="form-control" type="datetime-local" value="<?= date('Y-m-d') . "T" . date("H:i:s"); ?>" id="example-datetime-local-input" name="datetime">
                             </div>
                         </div>
                         <div class="form-group row">

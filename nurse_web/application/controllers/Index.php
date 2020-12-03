@@ -42,5 +42,17 @@ class Index extends CI_Controller {
     public function test() {
          $this->load->view('test');
     }
+    
+    public function tab_treat() {
+        $res = $this->Api_model->get_dispenses();
+        $data[data] = json_decode($res);
+        $this->load->view('tab/treat', $data);
+    }
+    
+    public function tab_history() {
+        $res = $this->Api_model->get_history();
+        $data[data] = json_decode($res);
+        $this->load->view('tab/treat', $data);
+    }
 
 }

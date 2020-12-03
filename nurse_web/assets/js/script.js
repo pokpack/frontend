@@ -24,8 +24,8 @@ $('#form_admit').submit(function (event) {
             type: 'post',
             success: function (res) {
                 console.log(res);
-//                t.value && Swal.fire("Success!", "Your file has been deleted.", "success");
-//                window.location.reload();
+                t.value && Swal.fire("Success!", "Your file has been deleted.", "success");
+                window.location.reload();
             },
             error: function (e) {
                 console.log(e)
@@ -51,4 +51,82 @@ function select_patient(ele) {
         $('#load_patient_data').html(html);
     });
 
+}
+
+function tabTreat() {
+    var url = base_url + "index/tab_treat";
+    $.post(url, function (ele) {
+        $('#body_tab_treat').html(ele);
+    });
+}
+
+function tabHistory() {
+    var url = base_url + "index/tab_history";
+    $.post(url, function (ele) {
+        $('#body_tab_his').html(ele);
+    });
+}
+
+function searchHn(val, type) {
+//    console.log(val);
+    if(val==""){
+         $(".tr-"+type).show();
+         return;
+    }
+    $(".text-"+type+"-hn").each(function (index) {
+
+        var text = $(this).text();
+        var id = $(this).data('id');
+        
+        console.log(text + " " + id + " : "+ val);
+        if (val.toUpperCase().indexOf(text.toUpperCase()) > -1) {
+            $('#tr_'+type+'_'+id).show();
+        } else {
+            $('#tr_'+type+'_'+id).hide();
+        }
+
+    });
+}
+
+function searchEmr(val, type) {
+    console.log(val);
+//    return;
+    if(val==""){
+         $(".tr-"+type).show();
+         return;
+    }
+    $(".text-"+type+"-emr").each(function (index) {
+
+        var text = $(this).text();
+        var id = $(this).data('id');
+        
+        console.log(text + " " + id + " : "+ val);
+        if (val.toUpperCase().indexOf(text.toUpperCase()) > -1) {
+            $('#tr_'+type+'_'+id).show();
+        } else {
+            $('#tr_'+type+'_'+id).hide();
+        }
+
+    });
+}
+
+function searchSeverity(val, type) {
+
+    if(val==""){
+         $(".tr-"+type).show();
+         return;
+    }
+    $(".text-"+type+"-sev").each(function (index) {
+
+        var text = $(this).text();
+        var id = $(this).data('id');
+        
+        console.log(text + " " + id + " : "+ val);
+        if (val.toUpperCase().indexOf(text.toUpperCase()) > -1) {
+            $('#tr_'+type+'_'+id).show();
+        } else {
+            $('#tr_'+type+'_'+id).hide();
+        }
+
+    });
 }

@@ -4,9 +4,9 @@ $_select = array('*');
 //                                                        
 $user = $this->Main_model->rowdata(TBL_PATIEN, $_where, $_select);
 //$data_emr = json_decode($data);
-echo "<pre>";
-print_r($data);
-echo "</pre>";
+//echo "<pre>";
+//print_r($data);
+//echo "</pre>";
 //$date = date_create($data->datetime);
 $datetime = date_format($date, "Y-m-d H:i:s");
 
