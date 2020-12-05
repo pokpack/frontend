@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en"  style="//background-color: #f9ffbd;">
 
     
 <!-- Mirrored from themesbrand.com/minible/layouts/vertical/auth-login.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 20 Nov 2020 08:19:12 GMT -->
@@ -14,15 +14,15 @@
         <link rel="shortcut icon" href="<?=base_url();?>assets/images/favicon.ico">
 
         <!-- Bootstrap Css -->
-        <link href="<?=base_url();?>assets/css/bootstrap.min.css" id="bootstrap-style" rel="stylesheet" type="text/css" />
+        <link href="<?=base_url();?>assets/css/bootstrap-dark.min.css" id="bootstrap-style" rel="stylesheet" type="text/css" />
         <!-- Icons Css -->
         <link href="<?=base_url();?>assets/css/icons.min.css" rel="stylesheet" type="text/css" />
         <!-- App Css-->
-        <link href="<?=base_url();?>assets/css/app.min.css" id="app-style" rel="stylesheet" type="text/css" />
+        <link href="<?=base_url();?>assets/css/app-dark.min.css" id="app-style" rel="stylesheet" type="text/css" />
 
     </head>
 
-    <body class="authentication-bg">
+    <body class="authentication-bg" style="//background-color: #f9ffbd;">
 
 <!--        <div class="home-btn d-none d-sm-block">
             <a href="index-2.html" class="text-dark"><i class="mdi mdi-home-variant h2"></i></a>
@@ -33,8 +33,9 @@
                     <div class="col-lg-12">
                         <div class="text-center">
                             <a href="index-2.html" class="mb-5 d-block auth-logo">
-                                <img src="<?=base_url();?>assets/images/logo-dark.png" alt="" height="22" class="logo logo-dark">
-                                <img src="<?=base_url();?>assets/images/logo-light.png" alt="" height="22" class="logo logo-light">
+<!--                                <img src="<?=base_url();?>assets/images/logo-dark.png" alt="" height="22" class="logo logo-dark">
+                                <img src="<?=base_url();?>assets/images/logo-light.png" alt="" height="22" class="logo logo-light">-->
+                                <h2>Doctor Web</h2>
                             </a>
                         </div>
                     </div>

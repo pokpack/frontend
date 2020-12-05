@@ -112,7 +112,8 @@ class Api_model extends CI_Model {
         $err = curl_error($curl);
 
         curl_close($curl);
-        $this->session->set_userdata(array('savedata' => 1));
+//        $this->session->set_userdata(array('savedata' => 1));
+        setcookie("savedata", 1, time() - 3600, '/');
         $data[param] = $param;
         $data[res] = $response;
         

@@ -11,7 +11,9 @@ class Logout extends CI_Controller
 * @ Login main
 */
 	public function index()	{
-		$this->session->unset_userdata(array('user_id','username'));
+//		$this->session->unset_userdata(array('user_id','username'));
+                setcookie("user_id", "", time() - 3600, '/');
+                setcookie("username", "", time() - 3600, '/');
 		redirect('login', 'refresh');
 	}
 /**

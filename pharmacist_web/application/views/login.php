@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" style="background-color: #95c9d0;">
 
     
 <!-- Mirrored from themesbrand.com/minible/layouts/vertical/auth-login.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 20 Nov 2020 08:19:12 GMT -->
@@ -22,7 +22,7 @@
 
     </head>
 
-    <body class="authentication-bg">
+    <body class="authentication-bg" style="background-color: #95c9d0;">
 
 <!--        <div class="home-btn d-none d-sm-block">
             <a href="index-2.html" class="text-dark"><i class="mdi mdi-home-variant h2"></i></a>
@@ -33,8 +33,7 @@
                     <div class="col-lg-12">
                         <div class="text-center">
                             <a href="index-2.html" class="mb-5 d-block auth-logo">
-                                <img src="<?=base_url();?>assets/images/logo-dark.png" alt="" height="22" class="logo logo-dark">
-                                <img src="<?=base_url();?>assets/images/logo-light.png" alt="" height="22" class="logo logo-light">
+                                <h2>Pharmacist Web</h2>
                             </a>
                         </div>
                     </div>

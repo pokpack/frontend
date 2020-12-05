@@ -7,7 +7,7 @@ class Api extends CI_Controller {
     public function __construct() {
         parent::__construct();
         $this->load->library('pagination');
-//	$this->load->model('Admin_model');
+	$this->load->model('Api_model');
         $this->load->model('Main_model');
     }
 
@@ -97,13 +97,19 @@ class Api extends CI_Controller {
         $return[url] = $url;
         $return[res] = $response;
         
-        $this->session->set_userdata(array('savedata' => 1));
+//        $this->session->set_userdata(array('savedata' => 1));
+        setcookie("savedata", 1, time() + 3600, '/');
         echo json_encode($return);
 //        echo json_encode($_POST);
     }
 
     public function get_admit() {
         
+    }
+    
+    public function post_treat() {
+        $data = $this->Api_model->post_treat();
+        echo $data;
     }
 
 }

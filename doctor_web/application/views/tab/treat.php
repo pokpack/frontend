@@ -10,7 +10,7 @@
 //    echo "</pre>";
     ?>
     <div class="table-responsive">
-        <table class="table mb-0">
+        <table id="tb_treat" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
             <thead>
                 <tr>
                     <th>#</th>
@@ -20,6 +20,7 @@
                     <th>Date</th>
                     <th>Symptom</th>
                     <th>Status</th>
+                    <th>EMR Id</th>
                     <th>Treat</th>
                 </tr>
             </thead>
@@ -40,11 +41,12 @@
                         <td align="center"><?= $val->hn; ?></td>
                         <td><?= $user->s_first_name . " " . $user->s_last_name; ?></td>
                         <td><?= $val->level; ?></td>
-                        <td><?=$datetime;?></td>
+                        <td><?= $datetime; ?></td>
                         <td><?= $val->symptoms; ?></td>
                         <td  align="center"><i class="fas fa-check"></i></td>
+                        <td  align="center"><?= $val->emrId; ?></td>
                         <td align="center">
-                            <button type="button" class="btn btn-primary btn-sm waves-effect waves-light" onclick="openModalTreat(<?=$val->hn;?>,<?=$val->emrId;?>);">
+                            <button type="button" class="btn btn-primary btn-sm waves-effect waves-light" onclick="openModalTreat(<?= $val->hn; ?>,<?= $val->emrId; ?>);">
                                 <i class="fas fa-edit"></i>
                             </button>
                         </td>
@@ -70,3 +72,9 @@
         </table>
     </div>
 </div>
+
+<script>
+    $("#tb_treat").DataTable();
+    $('#count_treat_case').text('<?=count($data);?>');
+    
+</script>

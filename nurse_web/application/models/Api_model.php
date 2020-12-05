@@ -45,11 +45,11 @@ class Api_model extends CI_Model {
 
         return $response;
     }
-    
+
     public function get_dispenses() {
 
         $curl = curl_init();
-        $url = "http://localhost:3001/api/dispenses";
+        $url = "http://localhost:3001/api/diagnoses";
         curl_setopt_array($curl, array(
             CURLOPT_PORT => "3001",
             CURLOPT_URL => $url,
@@ -73,11 +73,11 @@ class Api_model extends CI_Model {
 
         return $response;
     }
-    
+
     public function get_history() {
 
         $curl = curl_init();
-        $url = "http://localhost:3001/api/1/history";
+        $url = "http://localhost:3001/api/diagnoseds";
         curl_setopt_array($curl, array(
             CURLOPT_PORT => "3001",
             CURLOPT_URL => $url,
@@ -101,13 +101,13 @@ class Api_model extends CI_Model {
 
         return $response;
     }
-    
+
     public function post_treat() {
 
         $curl = curl_init();
         $hn = $_POST[hn];
         $emr = $_POST[emr];
-        $url = "http://localhost:3001/api/".$hn."/diagnose/".$emr;
+        $url = "http://localhost:3002/api/".$hn."/diagnose/".$emr;
         curl_setopt_array($curl, array(
             CURLOPT_PORT => "3001",
             CURLOPT_URL => $url,
@@ -130,9 +130,71 @@ class Api_model extends CI_Model {
         $err = curl_error($curl);
 
         curl_close($curl);
-        $this->session->set_userdata(array('savedata' => 1));
+//        $this->session->set_userdata(array('savedata' => 1));
+        setcookie("savedata", 1, time() + 3600, '/');
         return $response;
     }
+
+    public function get_data_emr($param) {
+        $curl = curl_init();
+
+        $hn = $_POST[hn];
+        $emr = $_POST[emr];
+        $url = "http://localhost:3001/api/" . $hn . "/emr/" . $emr;
+        curl_setopt_array($curl, array(
+            CURLOPT_PORT => "3001",
+            CURLOPT_URL => $url,
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => "",
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 30,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => "GET",
+            CURLOPT_HTTPHEADER => array(
+                "authorization: Bearer x]vf4yp0yf",
+                "cache-control: no-cache",
+                "postman-token: 128498c4-5746-e59e-c978-9121af266192"
+            ),
+        ));
+
+        $response = curl_exec($curl);
+        $err = curl_error($curl);
+
+        curl_close($curl);
+        return $response;
+    }
+
+//    public function post_treat() {
+//
+//        $curl = curl_init();
+//        $hn = $_POST[hn];
+//        $emr = $_POST[emr];
+//        $url = "http://localhost:3002/api/" . $hn . "/diagnose/" . $emr;
+//        curl_setopt_array($curl, array(
+//            CURLOPT_PORT => "3001",
+//            CURLOPT_URL => $url,
+//            CURLOPT_RETURNTRANSFER => true,
+//            CURLOPT_ENCODING => "",
+//            CURLOPT_MAXREDIRS => 10,
+//            CURLOPT_TIMEOUT => 30,
+//            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+//            CURLOPT_CUSTOMREQUEST => "POST",
+//            CURLOPT_POSTFIELDS => json_encode($_POST),
+//            CURLOPT_HTTPHEADER => array(
+//                "authorization: Bearer x]vf4yp0yf",
+//                "cache-control: no-cache",
+//                "content-type: application/json",
+//                "postman-token: 0d333b9f-13cc-f25c-82ef-a37628a808e7"
+//            ),
+//        ));
+//
+//        $response = curl_exec($curl);
+//        $err = curl_error($curl);
+//
+//        curl_close($curl);
+//        $this->session->set_userdata(array('savedata' => 1));
+//        return $response;
+//    }
 
     /*
      * 

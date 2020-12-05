@@ -1,3 +1,8 @@
+<?php
+$ob = json_decode($data);
+//                                        print_r($ob);
+
+?>
 <!-- ============================================================== -->
 <!-- Start right Content here -->
 <!-- ============================================================== -->
@@ -32,8 +37,8 @@
                         <div class="card-body">
 
                             <div>
-                                <p class="text-muted mb-0">Total Case</p>
-                                <h4 class="mb-1 mt-1"><span data-plugin="counterup">10</span></h4>
+                                <p class="text-muted mb-0">Total Examination Case</p>
+                                <h4 class="mb-1 mt-1"><span data-plugin="counterup"><?= count($ob); ?></span></h4>
 
                             </div>
                             <!--<p class="text-muted mt-3 mb-0"><span class="text-success mr-1"><i class="mdi mdi-arrow-up-bold ml-1"></i>2.65%</span> since last week</p>-->
@@ -46,8 +51,8 @@
                         <div class="card-body">
 
                             <div>
-                                <p class="text-muted mb-0">Total Patient</p>
-                                <h4 class="mb-1 mt-1"><span data-plugin="counterup">3</span></h4>
+                                <p class="text-muted mb-0">Total Treat Case</p>
+                                <h4 class="mb-1 mt-1"><span data-plugin="counterup" id="count_treat_case"><?=count($data2);?></span></h4>
 
                             </div>
                             <!--<p class="text-muted mt-3 mb-0"><span class="text-success mr-1"><i class="mdi mdi-arrow-up-bold ml-1"></i>2.65%</span> since last week</p>-->
@@ -56,7 +61,10 @@
                 </div> <!-- end col-->
             </div>
 
-
+            <!-- <div class="custom-control custom-switch mb-3">
+                                    <input type="checkbox" class="custom-control-input theme-choice" id="dark-mode-switch" data-bsStyle="assets/css/bootstrap-dark.min.css" data-appStyle="assets/css/app-dark.min.css" />
+                                    <label class="custom-control-label" for="dark-mode-switch">Dark Mode</label>
+                                </div>-->
             <div class="row">
                 <div class="col-lg-12">
                     <div class="card">
@@ -83,12 +91,9 @@
             <!--                                Create responsive tables by wrapping any <code>.table</code> in <code>.table-responsive</code>
                                             to make them scroll horizontally on small devices (under 768px).-->
                                         </p>
-                                        <?php 
-                                        $ob = json_decode($data);
-//                                        print_r($ob);
-                                        ?>
+
                                         <div class="table-responsive">
-                                            <table class="table mb-0">
+                                            <table id="tb_exn" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                                                 <thead>
                                                     <tr>
                                                         <th>#</th>
@@ -98,13 +103,14 @@
                                                         <th>Date</th>
                                                         <th>Symptom</th>
                                                         <th>Status</th>
+                                                        <th>EMR Id</th>
                                                         <th>Examtnation</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
                                                     <?php
                                                     $num1 = 0;
-                                                    
+
                                                     foreach ($ob as $key => $val) {
 
                                                         $_where = array('i_hn' => $val->hn);
@@ -123,8 +129,9 @@
                                                             <td><?= $datetime; ?></td>
                                                             <td><?= $val->symptoms; ?></td>
                                                             <td style="text-align: center;"><i class="fas fa-check"></i></td>
+                                                            <td style="text-align: center;"><?= $val->emrId; ?></td>
                                                             <td align="center">
-                                                                <button type="button" class="btn btn-primary btn-sm waves-effect waves-light" onclick="openModalDoc(<?= $user->i_hn; ?>, <?=$val->emrId;?>);">
+                                                                <button type="button" class="btn btn-primary btn-sm waves-effect waves-light" onclick="openModalDoc(<?= $user->i_hn; ?>, <?= $val->emrId; ?>);">
                                                                     <i class="fas fa-edit"></i>
                                                                 </button>
                                                             </td>
@@ -132,33 +139,33 @@
                                                     <?php }
                                                     ?>
 <!--                                                    <tr>
-                                                    <td>1</td>
-                                                    <td align="center">1</td>
-                                                    <td>testname 01</td>
-                                                    <td>5</td>
-                                                    <td>2020-11-25 16:00:00</td>
-                                                    <td>Have a high fever</td>
-                                                    <td  align="center"><i class="fas fa-check"></i></td>
-                                                    <td align="center">
-                                                        <button type="button" class="btn btn-primary btn-sm waves-effect waves-light" onclick="openModalDoc(1);">
-                                                            <i class="fas fa-edit"></i>
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>2</td>
-                                                    <td align="center">2</td>
-                                                    <td>testname 02</td>
-                                                    <td>5</td>
-                                                    <td>2020-11-25 16:00:00</td>
-                                                    <td>Have a high fever</td>
-                                                    <td  align="center"><i class="fas fa-check"></i></td>
-                                                    <td align="center">
-                                                        <button type="button" class="btn btn-primary btn-sm waves-effect waves-light" onclick="openModalDoc(2);">
-                                                            <i class="fas fa-edit"></i>
-                                                        </button>
-                                                    </td>
-                                                </tr>-->
+                                                <td>1</td>
+                                                <td align="center">1</td>
+                                                <td>testname 01</td>
+                                                <td>5</td>
+                                                <td>2020-11-25 16:00:00</td>
+                                                <td>Have a high fever</td>
+                                                <td  align="center"><i class="fas fa-check"></i></td>
+                                                <td align="center">
+                                                    <button type="button" class="btn btn-primary btn-sm waves-effect waves-light" onclick="openModalDoc(1);">
+                                                        <i class="fas fa-edit"></i>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>2</td>
+                                                <td align="center">2</td>
+                                                <td>testname 02</td>
+                                                <td>5</td>
+                                                <td>2020-11-25 16:00:00</td>
+                                                <td>Have a high fever</td>
+                                                <td  align="center"><i class="fas fa-check"></i></td>
+                                                <td align="center">
+                                                    <button type="button" class="btn btn-primary btn-sm waves-effect waves-light" onclick="openModalDoc(2);">
+                                                        <i class="fas fa-edit"></i>
+                                                    </button>
+                                                </td>
+                                            </tr>-->
                                                 </tbody>
                                             </table>
                                         </div>
@@ -209,7 +216,7 @@
                 </button>
             </div>
             <div class="modal-body" id="body_exn">
-                
+
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
     </div>

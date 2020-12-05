@@ -69,25 +69,26 @@ function submit_exn() {
     }).then(function (t) {
         var fd = $('#form_exn').serialize();
         var url = base_url + "api/post_exn";
-        $.ajax({
-            url: url, // point to server-side PHP script 
-            dataType: 'json', // what to expect back from the PHP script, if anything
-            data: fd,
-            type: 'post',
-            success: function (res) {
-                console.log(res);
-                t.value && Swal.fire("Success!", "Your file has been deleted.", "success");
-                window.location.reload();
-            },
-            error: function (e) {
-                console.log(e)
-            }
-        });
-
+        if (t.isConfirmed == true) {
+            $.ajax({
+                url: url, // point to server-side PHP script 
+                dataType: 'json', // what to expect back from the PHP script, if anything
+                data: fd,
+                type: 'post',
+                success: function (res) {
+                    console.log(res);
+                    t.value && Swal.fire("Success!", "Your file has been deleted.", "success");
+                    window.location.reload();
+                },
+                error: function (e) {
+                    console.log(e)
+                }
+            });
+        }
     });
 }
 
-function tabTreat(){
+function tabTreat() {
     var url = base_url + "index/tab_treat";
     $.post(url, function (ele) {
         $('#body_tab_treat').html(ele);
@@ -106,20 +107,21 @@ function submit_treat() {
     }).then(function (t) {
         var fd = $('#form_treat').serialize();
         var url = base_url + "api/post_treat";
-        $.ajax({
-            url: url, // point to server-side PHP script 
-            dataType: 'json', // what to expect back from the PHP script, if anything
-            data: fd,
-            type: 'post',
-            success: function (res) {
-                console.log(res);
-                t.value && Swal.fire("Success!", "Your file has been deleted.", "success");
-                window.location.reload();
-            },
-            error: function (e) {
-                console.log(e)
-            }
-        });
-
+        if (t.isConfirmed == true) {
+            $.ajax({
+                url: url, // point to server-side PHP script 
+                dataType: 'json', // what to expect back from the PHP script, if anything
+                data: fd,
+                type: 'post',
+                success: function (res) {
+                    console.log(res);
+                    t.value && Swal.fire("Success!", "Your file has been deleted.", "success");
+                    window.location.reload();
+                },
+                error: function (e) {
+                    console.log(e)
+                }
+            });
+        }
     });
 }

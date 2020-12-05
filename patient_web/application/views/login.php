@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" style="background-color: #fd6b61;">
 
     
 <!-- Mirrored from themesbrand.com/minible/layouts/vertical/auth-login.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 20 Nov 2020 08:19:12 GMT -->
@@ -22,19 +22,23 @@
 
     </head>
 
-    <body class="authentication-bg">
+    <body class="authentication-bg" style="background-color: #fd6b61;">
 
 <!--        <div class="home-btn d-none d-sm-block">
             <a href="index-2.html" class="text-dark"><i class="mdi mdi-home-variant h2"></i></a>
         </div>-->
+<?php 
+//$_COOKIE[user_id] = "";
+?>
         <div class="account-pages my-5 pt-sm-5">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="text-center">
-                            <a href="index-2.html" class="mb-5 d-block auth-logo">
-                                <img src="<?=base_url();?>assets/images/logo-dark.png" alt="" height="22" class="logo logo-dark">
-                                <img src="<?=base_url();?>assets/images/logo-light.png" alt="" height="22" class="logo logo-light">
+                            <a href="index-2.html" class="mb-5 d-block auth-logo" style="color: #fff;">
+<!--                                <img src="<?=base_url();?>assets/images/logo-dark.png" alt="" height="22" class="logo logo-dark">
+                                <img src="<?=base_url();?>assets/images/logo-light.png" alt="" height="22" class="logo logo-light">-->
+                                <h2 style="    color: #fff !important;">Patient Web <?=$_COOKIE[user_id];?></h2>
                             </a>
                         </div>
                     </div>

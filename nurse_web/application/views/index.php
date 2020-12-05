@@ -32,8 +32,8 @@
                         <div class="card-body">
 
                             <div>
-                                <p class="text-muted mb-0">Total Case</p>
-                                <h4 class="mb-1 mt-1"><span data-plugin="counterup">10</span></h4>
+                                <p class="text-muted mb-0">Total Admit Case</p>
+                                <h4 class="mb-1 mt-1"><span data-plugin="counterup"><?=count($data);?></span></h4>
 
                             </div>
                             <!--<p class="text-muted mt-3 mb-0"><span class="text-success mr-1"><i class="mdi mdi-arrow-up-bold ml-1"></i>2.65%</span> since last week</p>-->
@@ -46,8 +46,22 @@
                         <div class="card-body">
 
                             <div>
-                                <p class="text-muted mb-0">Total Patient</p>
-                                <h4 class="mb-1 mt-1"><span data-plugin="counterup">3</span></h4>
+                                <p class="text-muted mb-0">Total Treat Case</p>
+                                <h4 class="mb-1 mt-1"><span data-plugin="counterup" id="count_treat_case"><?=count($treat);?></span></h4>
+
+                            </div>
+                            <!--<p class="text-muted mt-3 mb-0"><span class="text-success mr-1"><i class="mdi mdi-arrow-up-bold ml-1"></i>2.65%</span> since last week</p>-->
+                        </div>
+                    </div>
+                </div> <!-- end col-->
+                
+                <div class="col-md-6 col-xl-3">
+                    <div class="card">
+                        <div class="card-body">
+
+                            <div>
+                                <p class="text-muted mb-0">Total History Case</p>
+                                <h4 class="mb-1 mt-1"><span data-plugin="counterup" id="count_his_case"><?=count($his);?></span></h4>
 
                             </div>
                             <!--<p class="text-muted mt-3 mb-0"><span class="text-success mr-1"><i class="mdi mdi-arrow-up-bold ml-1"></i>2.65%</span> since last week</p>-->
@@ -85,37 +99,37 @@
                                         <span class="d-none d-sm-block">Treat</span> 
                                     </a>
                                 </li>
-<!--                                <li class="nav-item waves-effect waves-light">
+                                <li class="nav-item waves-effect waves-light">
                                     <a class="nav-link" data-toggle="tab" href="#navpills-messages" role="tab" onclick="tabHistory();">
                                         <span class="d-block d-sm-none"><i class="far fa-envelope"></i></span>
                                         <span class="d-none d-sm-block">History</span>   
                                     </a>
-                                </li>-->
+                                </li>
                             </ul>
 
                             <div class="tab-content p-3 text-muted">
                                 <div class="tab-pane active" id="navpills-home" role="tabpanel">
-                                    <div style="margin: 10px;">
+<!--                                    <div style="margin: 10px;">
                                         <div data-repeater-list="group-a">
                                             <div data-repeater-item="" class="row">
                                                 <div class="form-group col-lg-2">
                                                     <label for="emrId">EMR Id</label>
-                                                    <input type="number" id="emr" name="emrId" class="form-control" onkeyup="searchEmr(this.value,'admit');">
+                                                    <input type="number" id="emr" name="emrId" class="form-control" onkeyup="searchEmr(this.value, 'admit');">
                                                 </div>
 
                                                 <div class="form-group col-lg-2">
                                                     <label for="hn">HN</label>
-                                                    <input type="number" id="hn" class="form-control"  onkeyup="searchHn(this.value,'admit');">
+                                                    <input type="number" id="hn" class="form-control"  onkeyup="searchHn(this.value, 'admit');">
                                                 </div>
 
                                                 <div class="form-group col-lg-2">
                                                     <label for="subject">Severity</label>
-                                                    <input type="text" id="severity" name="severity" class="form-control" onkeyup="searchSeverity(this.value,'admit');">
+                                                    <input type="text" id="severity" name="severity" class="form-control" onkeyup="searchSeverity(this.value, 'admit');">
                                                 </div>
                                             </div>
 
                                         </div>
-                                    </div>
+                                    </div>-->
 
                                     <div style="margin: 10px;">
                                         <h4 class="card-title">Admit list table</h4>
@@ -125,7 +139,7 @@
                                         </p>
 
                                         <div class="table-responsive">
-                                            <table class="table mb-0">
+                                            <table id="tb_admit" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                                                 <thead>
                                                     <tr>
                                                         <th>#</th>
@@ -152,16 +166,16 @@
                                                         $datetime = date_format($date, "Y-m-d H:i:s");
                                                         ?>
                                                         <tr id="tr_admit_<?= $val->id; ?>" class="tr-admit">
-                                                            <input type="hidden" value="<?= $val->id;?>" />
-                                                            <td><?= $num1 += 1; ?></td>
-                                                            <td style="text-align: center;"><span data-id="<?= $val->id; ?>" class="text-admit-hn"><?= $user->i_hn; ?></span></td>
-                                                            <td><?= $user->s_first_name . " " . $user->s_last_name; ?></td>
-                                                            <td style="text-align: center;"><span data-id="<?= $val->id; ?>" class="text-admit-sev"><?= $val->level; ?></span></td>
-                                                            <td><?= $datetime; ?></td>
-                                                            <td><?= $val->symptoms; ?></td>
-                                                            <td style="text-align: center;"><i class="fas fa-check"></i></td>
-                                                            <td style="text-align: center;"><span data-id="<?= $val->id; ?>" class="text-admit-emr"><?= $val->emrId; ?></span></td>
-                                                        </tr>
+                                                    <input type="hidden" value="<?= $val->id; ?>" />
+                                                    <td><?= $num1 += 1; ?></td>
+                                                    <td style="text-align: center;"><span data-id="<?= $val->id; ?>" class="text-admit-hn"><?= $user->i_hn; ?></span></td>
+                                                    <td><?= $user->s_first_name . " " . $user->s_last_name; ?></td>
+                                                    <td style="text-align: center;"><span data-id="<?= $val->id; ?>" class="text-admit-sev"><?= $val->level; ?></span></td>
+                                                    <td><?= $datetime; ?></td>
+                                                    <td><?= $val->symptoms; ?></td>
+                                                    <td style="text-align: center;"><i class="fas fa-check"></i></td>
+                                                    <td style="text-align: center;"><span data-id="<?= $val->id; ?>" class="text-admit-emr"><?= $val->emrId; ?></span></td>
+                                                    </tr>
                                                 <?php }
                                                 ?>
                                                 </tbody>
@@ -176,11 +190,11 @@
                                     </div>
                                 </div>
 
-<!--                                <div class="tab-pane" id="navpills-messages" role="tabpanel" >
+                                <div class="tab-pane" id="navpills-messages" role="tabpanel" >
                                     <div class="tab-pane active" role="tabpanel" id="body_tab_his">
-                                    ...
+                                        ...
                                     </div>
-                                </div>-->
+                                </div>
 
                             </div>
 
@@ -224,7 +238,8 @@
             </div>
             <div class="modal-body">
                 <form id="form_admit" method="post">
-                    <input type="hidden" value="<?= $this->session->userdata('user_id'); ?>" name="nurse_record" />
+                    <!--<input type="hidden" value="<?= $this->session->userdata('user_id'); ?>" name="nurse_record" />-->
+                    <input type="hidden" value="<?= $_COOKIE[user_id]; ?>" name="nurse_record" />
                     <div class="" style="padding: 15px; ">
                         <div class="form-group row">
                             <label for="example-datetime-local-input" 
@@ -277,73 +292,114 @@
                         <div class="form-group row">
                             <label for="example-text-input" class="col-md-2 col-form-label">LMP</label>
                             <div class="col-md-10">
-                                <input class="form-control" type="text" value="" name="lmp">
+                                <input class="form-control" type="date" value="<?= date('Y-m-d'); ?>" name="lmp">
                             </div>
                         </div>
                         <div class="form-group row">
                             <label for="example-text-input" class="col-md-2 col-form-label">Symptoms</label>
                             <div class="col-md-10">
-                                <input class="form-control" type="text" value="" name="symptoms">
+                                <!--<input class="form-control" type="text" value="" name="symptoms">-->
+                                <textarea name="symptoms" class="form-control" rows="3"></textarea>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label for="example-text-input" class="col-md-2 col-form-label">Current symptoms / first symptoms / trauma</label>
                             <div class="col-md-10">
-                                <input class="form-control" type="text" value="" name="all_symptoms">
+                                <!--<input class="form-control" type="text" value="" name="all_symptoms">-->
+                                <textarea name="all_symptoms" class="form-control" rows="3"></textarea>
                             </div>
                         </div>
+
+                        <div style="background-color: #2196F3;
+                             width: 100%;
+                             height: 2px;
+                             margin-top: 10px;
+                             margin-bottom: 30px;box-shadow: 1px 1px 2px;"></div>
+
                         <div class="form-group row">
-                            <label for="example-text-input" class="col-md-2 col-form-label">Glasgow coma scale (GCS)</label>
-                            <div class="col-md-10">
-                                <input class="form-control" type="text" value="" name="all_symptoms">
+                            <div class="col-md-6">
+                                <div class="form-group row" style="margin-bottom: 0px;">
+                                    <label for="example-text-input" class="col-md-4 col-form-label">Glasgow coma scale (GCS)</label>
+                                    <div class="col-md-8">
+                                        <input class="form-control" type="number" value="" name="gcs">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group row" style="margin-bottom: 0px;">
+                                    <label for="example-text-input" class="col-md-4 col-form-label">E (Eye opening)</label>
+                                    <div class="col-md-8">
+                                        <input class="form-control" type="number" value="" name="e">
+                                    </div>
+                                </div>
                             </div>
                         </div>
+                        <!--                        <div class="form-group row">
+                                                    <label for="example-text-input" class="col-md-2 col-form-label">E (Eye opening)</label>
+                                                    <div class="col-md-10">
+                                                        <input class="form-control" type="number" value="" name="e">
+                                                    </div>
+                                                </div>-->
                         <div class="form-group row">
-                            <label for="example-text-input" class="col-md-2 col-form-label">E (Eye opening)</label>
-                            <div class="col-md-10">
-                                <input class="form-control" type="number" value="" name="e">
+                            <div class="col-md-6">
+                                <div class="form-group row" style="margin-bottom: 0px;">
+                                    <label for="example-text-input" class="col-md-4 col-form-label">V (Verbal response)</label>
+                                    <div class="col-md-8">
+                                        <input class="form-control" type="number" value="" name="v">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group row" style="margin-bottom: 0px;">
+                                    <label for="example-text-input" class="col-md-4 col-form-label">M (Motor response)</label>
+                                    <div class="col-md-8">
+                                        <input class="form-control" type="number" value="" name="m">
+                                    </div>
+                                </div>
                             </div>
                         </div>
+
                         <div class="form-group row">
-                            <label for="example-text-input" class="col-md-2 col-form-label">V (Verbal response)</label>
-                            <div class="col-md-10">
-                                <input class="form-control" type="number" value="" name="v">
+                            <div class="col-md-6">
+                                <div class="form-group row" style="margin-bottom: 0px;">
+                                    <label for="example-text-input" class="col-md-4 col-form-label">BT</label>
+                                    <div class="col-md-8">
+                                        <input class="form-control" type="number" value="" name="bt">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group row" style="margin-bottom: 0px;">
+                                    <label for="example-text-input" class="col-md-4 col-form-label">BP</label>
+                                    <div class="col-md-8">
+                                        <input class="form-control" type="number" value="" name="bp">
+                                    </div>
+                                </div>
                             </div>
                         </div>
+
                         <div class="form-group row">
-                            <label for="example-text-input" class="col-md-2 col-form-label">M (Motor response)</label>
-                            <div class="col-md-10">
-                                <input class="form-control" type="number" value="" name="m">
+                            <div class="col-md-6">
+                                <div class="form-group row" style="margin-bottom: 0px;">
+                                    <label for="example-text-input" class="col-md-4 col-form-label">PR</label>
+                                    <div class="col-md-8">
+                                        <input class="form-control" type="number" value="" name="pr">
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="example-text-input" class="col-md-2 col-form-label">BT</label>
-                            <div class="col-md-10">
-                                <input class="form-control" type="text" value="" name="bt">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="example-text-input" class="col-md-2 col-form-label">BP</label>
-                            <div class="col-md-10">
-                                <input class="form-control" type="text" value="" name="bp">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="example-text-input" class="col-md-2 col-form-label">PR</label>
-                            <div class="col-md-10">
-                                <input class="form-control" type="text" value="" name="pr">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="example-text-input" class="col-md-2 col-form-label">O2sat</label>
-                            <div class="col-md-10">
-                                <input class="form-control" type="text" value="" name="o2sat">
+                            <div class="col-md-6">
+                                <div class="form-group row" style="margin-bottom: 0px;">
+                                    <label for="example-text-input" class="col-md-4 col-form-label">O2sat</label>
+                                    <div class="col-md-8">
+                                        <input class="form-control" type="number" value="" name="o2sat">
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label for="example-text-input" class="col-md-2 col-form-label">Pain Score (PS)</label>
                             <div class="col-md-10">
-                                <input class="form-control" type="text" value=""name="ps">
+                                <input class="form-control" type="number" value=""name="ps">
                             </div>
                         </div>
                     </div>
@@ -356,3 +412,36 @@
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
     </div>
+</div>   
+
+<div class="modal fade bs-example-modal-lg" tabindex="-1" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;" id="lg_modal_2">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title mt-0" id="myLargeModalLabel">New Admit</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body" id="body_treat">
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div>
+</div>
+
+
+<div class="modal fade bs-example-modal-lg" tabindex="-1" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;" id="lg_modal_3">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title mt-0" id="myLargeModalLabel">History EMR</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body" id="body_his">
+                
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div>
+</div>

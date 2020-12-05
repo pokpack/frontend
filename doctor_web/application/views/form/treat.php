@@ -198,7 +198,8 @@ $pharmacist_record = $this->Main_model->rowdata(TBL_USER, $_where, $_select);
 <form id="form_treat" method="post">
     <input name="hn" value="<?= $_POST[hn]; ?>" type="hidden" />
     <input name="emr" value="<?= $_POST[emr]; ?>" type="hidden" />
-    <input type="hidden" value="<?= $this->session->userdata('user_id'); ?>" name="treat_record" />
+    <input type="hidden" value="<?= $_COOKIE[user_id]; ?>" name="treat_record" />
+    <!--<input type="hidden" value="<?= $this->session->userdata('user_id'); ?>" name="treat_record" />-->
     <!--<input type="hidden" value="<?= $data->doctor_record; ?>" name="doctor_record" />-->
     <!--<input type="hidden" value="<?= $data->nurse_record; ?>" name="nurse_record" />-->
     <div class="" style="padding: 15px; padding-bottom: 0px;">
@@ -216,6 +217,12 @@ $pharmacist_record = $this->Main_model->rowdata(TBL_USER, $_where, $_select);
                     <option value="<?=$val->id;?>"><?=$val->s_name;?></option>
                     <?php } ?>
                 </select>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="" class="col-md-2 col-form-label">Treatment results</label>
+            <div class="col-md-10">
+                <textarea class="form-control" rows="3" name="treat_res"></textarea>
             </div>
         </div>
     </div>

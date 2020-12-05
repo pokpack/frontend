@@ -28,9 +28,13 @@ class Component extends CI_Controller {
     public function index() {
         
     }
-    
+
     public function cpn_patient() {
-         $this->load->view('component/patient');
+
+        $_select = array('*');
+        $arr_where = array('id' => $_POST[id]);
+        $data[data] = $this->Main_model->rowdata(TBL_PATIEN, $arr_where, $_select);
+        $this->load->view('component/patient',$data);
     }
 
 }

@@ -160,7 +160,7 @@ $doctor_recorder = $this->Main_model->rowdata(TBL_USER, $_where, $_select);
             <table class="table table-bordered table-nowrap mb-0">
                 <tr>
                     <th class="text-nowrap" scope="row" width="200">Treatment</th>
-                    <td><?=$val->treat;?></td>
+                    <td><?=$data->treat;?></td>
                 </tr>
                 <tr>
                     <th class="text-nowrap" scope="row" width="200">Drug</th>
@@ -187,7 +187,8 @@ $doctor_recorder = $this->Main_model->rowdata(TBL_USER, $_where, $_select);
 <form id="form_dis" method="post">
     <input name="hn" value="<?= $_POST[hn]; ?>" type="hidden" />
     <input name="emr" value="<?= $_POST[emr]; ?>" type="hidden" />
-    <input type="hidden" value="<?= $this->session->userdata('user_id'); ?>" name="pharmacist_record" />
+    <input type="hidden" value="<?= $_COOKIE[user_id]; ?>" name="pharmacist_record" />
+    <!--<input type="hidden" value="<?= $this->session->userdata('user_id'); ?>" name="pharmacist_record" />-->
     <input type="hidden" value="<?= $data->doctor_record; ?>" name="doctor_record" />
     <input type="hidden" value="<?= $data->nurse_record; ?>" name="nurse_record" />
     <div class="" style="padding: 15px; padding-bottom: 0px;">

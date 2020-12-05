@@ -8,16 +8,29 @@ class Loadpost {
         $this->CI = & get_instance();
     }
 
-    public function check_login() {
+//    public function check_login() {
+//
+//        if ($_COOKIE[SESS_ID] == NULL) {
+//            if ($this->CI->session->userdata('user_id') == NULL) {
+//                $class = $this->CI->router->fetch_class();
+//                if ($class != 'login') {
+//                    if ($class != 'lang' && $class != 'api') {
+//                        redirect('login', 'refresh');
+////                        exit();
+//                    }
+//                }
+//            } else {
+//                
+//            }
+//        }
+//    }
 
-//   if ($_SERVER['REMOTE_ADDR'] != '127.0.0.1') {
-//     $axxx_https = $_SERVER['HTTPS'];
-//     if ($axxx_https == '') {
-//       //redirect('','refresh');
-//     }
-//   }
-        if ($_COOKIE[SESS_ID] == NULL) {
-            if ($this->CI->session->userdata('user_id') == NULL) {
+    public function check_login() {
+        $ci =& get_instance();
+        $ci->load->helper('cookie');
+        $user = $ci->input->cookie('user_id');
+//        if ($_COOKIE[SESS_ID] == NULL) {
+            if ($user == NULL or $user == "") {
                 $class = $this->CI->router->fetch_class();
                 if ($class != 'login') {
                     if ($class != 'lang' && $class != 'api') {
@@ -26,9 +39,10 @@ class Loadpost {
                     }
                 }
             } else {
-                
+//                echo $user." ++";
+//                exit();
             }
-        }
+//        }
     }
 
 }

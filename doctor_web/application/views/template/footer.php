@@ -61,11 +61,11 @@
 <script src="<?= base_url(); ?>assets/libs/jquery.counterup/jquery.counterup.min.js"></script>
 
 <!-- apexcharts -->
-<script src="<?= base_url(); ?>assets/libs/apexcharts/apexcharts.min.js"></script>
+<!--<script src="<?= base_url(); ?>assets/libs/apexcharts/apexcharts.min.js"></script>
 
-<script src="<?= base_url(); ?>assets/js/pages/dashboard.init.js"></script>
+<script src="<?= base_url(); ?>assets/js/pages/dashboard.init.js"></script>-->
 
-<script src="<?= base_url(); ?>assets/js/app.js"></script>
+<!--<script src="<?= base_url(); ?>assets/js/app.js"></script>-->
 
 <!-- plugins -->
 <script src="<?= base_url(); ?>assets/libs/select2/js/select2.min.js"></script>
@@ -82,8 +82,18 @@
 
 <!-- Sweet alert init js-->
 <script src="<?= base_url(); ?>assets/js/pages/sweet-alerts.init.js"></script>
+
+<!-- Required datatable js -->
+<script src="<?= base_url(); ?>assets/libs/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="<?= base_url(); ?>assets/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
+
+<!-- Responsive examples -->
+<script src="<?= base_url(); ?>assets/libs/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+<script src="<?= base_url(); ?>assets/libs/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js"></script>
+
 <?php
-if ($this->session->userdata('savedata') == 1) {
+//if ($this->session->userdata('savedata') == 1) {
+if ($_COOKIE[savedata] == 1) {
 //            echo $this->session->userdata('savedata');
     ?>
     <script>
@@ -96,12 +106,14 @@ if ($this->session->userdata('savedata') == 1) {
         });
     </script>
     <?php
-    $this->session->set_userdata(array('savedata' => ''));
+//    $this->session->set_userdata(array('savedata' => ''));
+    setcookie("savedata", "", time() - 3600, '/');
 }
 ?>
 </body>
 
 <script>
+    $("#tb_exn").DataTable();
     $("#d_date").val(new Date().toJSON().slice(0, 19));
 </script>
 

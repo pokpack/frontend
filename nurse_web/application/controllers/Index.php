@@ -32,15 +32,22 @@ class Index extends CI_Controller {
 //        exit();
 //        $this->load->view('template/test');
         $data[data] = $this->Api_model->get_admit();
-//        print_r($data);
-//        exit();
+////        print_r($data);
+////        exit();
+        $res = $this->Api_model->get_dispenses();
+        $data[treat] = json_decode($res);
+        
+        $res = $this->Api_model->get_history();
+        $data[his] = json_decode($res);
+        
         $this->load->view('template/header');
         $this->load->view('index',$data);
         $this->load->view('template/footer');
     }
     
     public function test() {
-         $this->load->view('test');
+         $this->load->view('template/header');
+//        echo 123;
     }
     
     public function tab_treat() {
@@ -52,7 +59,25 @@ class Index extends CI_Controller {
     public function tab_history() {
         $res = $this->Api_model->get_history();
         $data[data] = json_decode($res);
-        $this->load->view('tab/treat', $data);
+        $this->load->view('tab/history', $data);
+    }
+    
+    public function histroy() {
+        
+        $res = $this->Api_model->get_data_emr();
+        $data[data] = json_decode($res);
+//        print_r($data);
+        $this->load->view('modal/history',$data);
+        
+    }
+    
+    public function treat() {
+        $res = $this->Api_model->get_data_emr();
+        $data[data] = json_decode($res);
+//        echo "<pre>";
+//        print_r($_POST);
+//        echo "</pre>";
+        $this->load->view('form/treat', $data);
     }
 
 }

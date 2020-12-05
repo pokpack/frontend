@@ -33,8 +33,9 @@
                     <div class="col-lg-12">
                         <div class="text-center">
                             <a href="index-2.html" class="mb-5 d-block auth-logo">
-                                <img src="<?=base_url();?>assets/images/logo-dark.png" alt="" height="22" class="logo logo-dark">
-                                <img src="<?=base_url();?>assets/images/logo-light.png" alt="" height="22" class="logo logo-light">
+<!--                                <img src="<?=base_url();?>assets/images/logo-dark.png" alt="" height="22" class="logo logo-dark">
+                                <img src="<?=base_url();?>assets/images/logo-light.png" alt="" height="22" class="logo logo-light">-->
+                                <h2>Nurse Web</h2>
                             </a>
                         </div>
                     </div>

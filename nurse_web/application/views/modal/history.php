@@ -1,5 +1,5 @@
 <?php
-$_where = array('i_hn' => $_POST[hn]);
+$_where = array('i_hn' => $data->hn);
 $_select = array('*');
 //                                                        
 $user = $this->Main_model->rowdata(TBL_PATIEN, $_where, $_select);
@@ -7,13 +7,35 @@ $user = $this->Main_model->rowdata(TBL_PATIEN, $_where, $_select);
 //echo "<pre>";
 //print_r($data);
 //echo "</pre>";
-$date = date_create($data->datetime);
+
+//$date = date_create($data->datetime);
 $datetime = date_format($date, "Y-m-d H:i:s");
 
 $_where = array('id' => $data->nurse_record);
 $_select = array('s_first_name,s_last_name');
 //                                                        
-$recorder = $this->Main_model->rowdata(TBL_USER, $_where, $_select);
+$nurse_recorder = $this->Main_model->rowdata(TBL_USER, $_where, $_select);
+
+$_where = array('id' => $data->doctor_record);
+$_select = array('s_first_name,s_last_name');
+//                                                        
+$doctor_recorder = $this->Main_model->rowdata(TBL_USER, $_where, $_select);
+
+$_where = array('id' => $data->pharmacist_record);
+$_select = array('s_first_name,s_last_name');
+//                                                        
+$pharmacist_record = $this->Main_model->rowdata(TBL_USER, $_where, $_select);
+
+$_where = array('id' => $data->treat_record);
+$_select = array('s_first_name,s_last_name');
+//                                                        
+$treat_record = $this->Main_model->rowdata(TBL_USER, $_where, $_select);
+
+$_where = array('id' => $data->diagnosis);
+$_select = array('s_name');
+//                                                        
+$dis = $this->Main_model->rowdata(TBL_DIAGNOSIS, $_where, $_select);
+//exit();
 ?>
 
 <div class="card border border-primary">
@@ -64,6 +86,7 @@ $recorder = $this->Main_model->rowdata(TBL_USER, $_where, $_select);
         </table>
     </div>
 </div>
+
 <div class="card border border-danger">
     <div class="card-header bg-transparent border-danger">
         <h5 class="my-0 text-danger"><i class="uil uil-user mr-3"></i>Medical Record</h5>
@@ -138,57 +161,75 @@ $recorder = $this->Main_model->rowdata(TBL_USER, $_where, $_select);
                 </tr>
                 <tr>
                     <th class="text-nowrap" scope="row">Nurse record</th>
-                    <td colspan="5"><?= $recorder->s_first_name . " " . $recorder->s_last_name; ?></td>
+                    <td colspan="5"><?= $nurse_recorder->s_first_name . " " . $nurse_recorder->s_last_name; ?></td>
                 </tr>
             </table>
         </div>
     </div>
 </div>
-<form id="form_exn" method="post">
-    <input name="hn" value="<?= $_POST[hn]; ?>" type="hidden" />
-    <input name="emr" value="<?= $_POST[emr]; ?>" type="hidden" />
-    <!--<input type="hidden" value="<?= $this->session->userdata('user_id'); ?>" name="doctor_record" />-->
-    <input type="hidden" value="<?= $_COOKIE[user_id]; ?>" name="doctor_record" />
-    <input type="hidden" value="<?= $data->nurse_record; ?>" name="nurse_record" />
-    <div class="" style="padding: 15px; padding-bottom: 0px;">
-        <div class="form-group row">
-            <label for="" class="col-md-2 col-form-label">Treatment</label>
-            <div class="col-md-10">
-                <!--<input class="form-control" type="datetime-local" value="<?= date(); ?>" name="date" id="d_date">-->
-                <!--<input class="form-control" type="text" value="" >-->
-                <textarea id="formmessage" class="form-control" rows="3" name="treat"></textarea>
-            </div>
-        </div>
-        <div class="form-group row">
-            <label for="" class="col-md-2 col-form-label">Drug&nbsp;&nbsp;&nbsp;
-                <button type="button" class="btn btn-danger btn-sm waves-effect waves-light" onclick="appendDrug();">
-                    <i class="fas fa-plus-circle"></i></button></label>
 
-            <div class="col-md-10" id="box_drug">
-                <div class="row row_drug" style="margin-bottom: 15px;">
-                    <div class="col-md-8">
-                        <select class="form-control" name="drug[id][]">
-                            <option></option>
-                            <?php
-                            $_where = array('i_status' => 1);
-                            $_select = array('*');
-                            $drug = $this->Main_model->fetch_data('', '', TBL_DRUG, $_where, $_select);
-                            foreach ($drug as $key => $val) {
-                                ?>
-                            <option value="<?=$val->id;?>"><?=$val->s_name;?></option>
-                            <?php } ?>
-                        </select>
-                    </div>
-                    <div class="col-md-2">
-                        <input type="number" value="0" class="form-control" name="drug[num][]" />
-                    </div>
-                </div>
-            </div>
-
+<div class="card border border-info">
+    <div class="card-header bg-transparent border-info">
+        <h5 class="my-0 text-info"><i class="uil uil-user mr-3"></i>Examination Record</h5>
+    </div>
+    <div class="card-body">
+        <!--<h5 class="card-title mt-0">card title</h5>-->
+        <div class="table-responsive">
+            <table class="table table-bordered table-nowrap mb-0">
+                <tr>
+                    <th class="text-nowrap" scope="row" width="200">Treatment</th>
+                    <td><?= $data->treat; ?></td>
+                </tr>
+                <tr>
+                    <th class="text-nowrap" scope="row" width="200">Drug</th>
+                    <td>
+                        <?php
+                        foreach ($data->drug as $key => $val) {
+                            $_where = array('id' => $val->id);
+                            $_select = array('s_name');
+                            $data_drug = $this->Main_model->rowdata(TBL_DRUG, $_where, $_select);
+                            ?>
+                            <p><?= $data_drug->s_name; ?> : <?= $val->num; ?></p>
+                        <?php }
+                        ?>
+                    </td>
+                </tr>
+                <tr>
+                    <th class="text-nowrap" scope="row" width="200">Doctor Record</th>
+                    <td colspan="5"><?= $doctor_recorder->s_first_name . " " . $doctor_recorder->s_last_name; ?></td>
+                </tr>
+                <tr>
+                    <th class="text-nowrap" scope="row" width="200">Pharmacist record</th>
+                    <td><?= $pharmacist_record->s_first_name . " " . $pharmacist_record->s_last_name; ?></td>
+                </tr>
+            </table>
         </div>
     </div>
-    <div style="padding: 15px;">
-        <button type="button" class="btn btn-primary btn-lg btn-block waves-effect waves-light mb-1" onclick="submit_exn();">Submit data</button>
-        <!--<button type="button" class="btn btn-primary btn-lg btn-block waves-effect waves-light mb-1" onclick="test();">Submit x</button>-->
+</div>
+
+<div class="card border border-success">
+    <div class="card-header bg-transparent border-success">
+        <h5 class="my-0 text-success"><i class="uil uil-user mr-3"></i>Diagnosis Record</h5>
     </div>
-</form>
+    <div class="card-body">
+        <!--<h5 class="card-title mt-0">card title</h5>-->
+        <div class="table-responsive">
+            <table class="table table-bordered table-nowrap mb-0">
+                <tr>
+                    <th class="text-nowrap" scope="row" width="200">Diagnosis</th>
+                    <td><?= $dis->s_name; ?></td>
+                </tr>
+                <tr>
+                    <th class="text-nowrap" scope="row" width="200">Treatment results</th>
+                    <td><?= $data->treat_res; ?></td>
+                </tr>
+                <tr>
+                    <th class="text-nowrap" scope="row" width="200">Recorder</th>
+                    <td>
+                       <?= $treat_record->s_first_name . " " . $treat_record->s_last_name; ?>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>

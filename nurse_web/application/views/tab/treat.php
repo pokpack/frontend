@@ -1,4 +1,4 @@
-<div style="margin: 10px;">
+<!--<div style="margin: 10px;">
     <div data-repeater-list="group-a">
         <div data-repeater-item="" class="row">
             <div class="form-group col-lg-2">
@@ -18,7 +18,7 @@
         </div>
 
     </div>
-</div>
+</div>-->
 <div style="margin: 10px;">
     <h4 class="card-title">Treat list table</h4>
     <p class="card-title-desc">
@@ -31,7 +31,7 @@
 //    echo "</pre>";
     ?>
     <div class="table-responsive">
-        <table class="table mb-0">
+        <table id="tb_treat" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
             <thead>
                 <tr>
                     <th>#</th>
@@ -93,3 +93,8 @@
         </table>
     </div>
 </div>
+
+<script>
+    $('#count_treat_case').text('<?=count($data);?>');
+    $("#tb_treat").DataTable();
+</script>

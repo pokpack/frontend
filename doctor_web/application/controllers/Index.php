@@ -32,6 +32,10 @@ class Index extends CI_Controller {
 //        exit();
 //        $this->load->view('template/test');
         $data[data] = $this->Api_model->get_admit();
+        
+        $res = $this->Api_model->get_dispenses();
+        $data[data2] = json_decode($res);
+        
         $this->load->view('template/header');
         $this->load->view('index', $data);
         $this->load->view('template/footer');

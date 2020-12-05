@@ -216,6 +216,10 @@ $dis = $this->Main_model->rowdata(TBL_DIAGNOSIS, $_where, $_select);
                     <td><?= $dis->s_name; ?></td>
                 </tr>
                 <tr>
+                    <th class="text-nowrap" scope="row" width="200">Treatment results</th>
+                    <td><?= $data->treat_res; ?></td>
+                </tr>
+                <tr>
                     <th class="text-nowrap" scope="row" width="200">Recorder</th>
                     <td>
                        <?= $treat_record->s_first_name . " " . $treat_record->s_last_name; ?>

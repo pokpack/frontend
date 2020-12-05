@@ -34,7 +34,7 @@ function openHistory(hn, emr) {
         emr: emr
     };
     $.post(url, param, function (ele) {
-        console.log(ele);
+//        console.log(ele);
         $('#body_his').html(ele);
     });
 }

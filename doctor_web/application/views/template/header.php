@@ -14,11 +14,11 @@
         <link rel="shortcut icon" href="<?=base_url();?>assets/images/favicon.ico">
 
         <!-- Bootstrap Css -->
-        <link href="<?= base_url(); ?>assets/css/bootstrap.min.css" id="bootstrap-style" rel="stylesheet" type="text/css" />
+        <link href="<?= base_url(); ?>assets/css/bootstrap-dark.min.css" id="bootstrap-style" rel="stylesheet" type="text/css" />
         <!-- Icons Css -->
         <link href="<?= base_url(); ?>assets/css/icons.min.css" rel="stylesheet" type="text/css" />
         <!-- App Css-->
-        <link href="<?= base_url(); ?>assets/css/app.min.css" id="app-style" rel="stylesheet" type="text/css" />
+        <link href="<?= base_url(); ?>assets/css/app-dark.min.css" id="app-style" rel="stylesheet" type="text/css" />
 
         <!-- plugin css -->
         <link href="<?= base_url(); ?>assets/libs/select2/css/select2.min.css" rel="stylesheet" type="text/css" />
@@ -27,6 +27,13 @@
         <link href="<?= base_url(); ?>assets/libs/bootstrap-touchspin/jquery.bootstrap-touchspin.min.css" rel="stylesheet" />
         <!-- Sweet Alert-->
         <link href="<?= base_url(); ?>assets/libs/sweetalert2/sweetalert2.min.css" rel="stylesheet" type="text/css" />
+        
+        <!-- DataTables -->
+        <link href="<?= base_url(); ?>assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+        <!--<link href="<?= base_url(); ?>assets/libs/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css" rel="stylesheet" type="text/css" />-->
+
+        <!-- Responsive datatable examples -->
+        <link href="<?= base_url(); ?>assets/libs/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css" rel="stylesheet" type="text/css" />  
     </head>
     <script>
         var base_url = "<?= base_url(); ?>";
@@ -50,7 +57,7 @@
                                     <img src="<?=base_url();?>assets/images/logo-sm.png" alt="" height="22">
                                 </span>
                                 <span class="logo-lg">
-                                    <img src="<?=base_url();?>assets/images/logo-dark.png" alt="" height="20">
+                                    <h3 style="margin: 20px;">Doctor</h3>
                                 </span>
                             </a>
 
@@ -59,7 +66,7 @@
                                     <img src="<?=base_url();?>assets/images/logo-sm.png" alt="" height="22">
                                 </span>
                                 <span class="logo-lg">
-                                    <img src="<?=base_url();?>assets/images/logo-light.png" alt="" height="20">
+                                    <h3 style="margin: 20px;">Doctor</h3>
                                 </span>
                             </a>
                         </div>
@@ -67,7 +74,7 @@
                         <button type="button" class="btn btn-sm px-3 font-size-16 header-item waves-effect vertical-menu-btn">
                             <i class="fa fa-fw fa-bars"></i>
                         </button>
-
+                        
                         <!-- App Search-->
 <!--                        <form class="app-search d-none d-lg-block">
                             <div class="position-relative">
@@ -277,9 +284,11 @@
                         <div class="dropdown d-inline-block">
                             <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown"
                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="d-nonex d-xl-inline-block ml-1 font-weight-medium font-size-15">
+                                                                   <?=$_COOKIE[firstname]." ".$_COOKIE[lastname];?></span>
                                 <img class="rounded-circle header-profile-user" src="<?=base_url();?>assets/images/users/user.png"
                                      alt="Header Avatar">
-                                <span class="d-none d-xl-inline-block ml-1 font-weight-medium font-size-15"><?=$this->session->userdata('firstname')." ".$this->session->userdata('lastname');?></span>
+                                
                                 <i class="uil-angle-down d-none d-xl-inline-block font-size-15"></i>
                             </button>
                             <div class="dropdown-menu dropdown-menu-right">
@@ -313,7 +322,7 @@
                             <img src="<?=base_url();?>assets/images/logo-sm.png" alt="" height="22">
                         </span>
                         <span class="logo-lg">
-                            <img src="<?=base_url();?>assets/images/logo-dark.png" alt="" height="20">
+                            <h3 style="margin: 20px;">Doctor</h3>
                         </span>
                     </a>
 
@@ -322,7 +331,7 @@
                             <img src="<?=base_url();?>assets/images/logo-sm.png" alt="" height="22">
                         </span>
                         <span class="logo-lg">
-                            <img src="<?=base_url();?>assets/images/logo-light.png" alt="" height="20">
+                            <h3 style="margin: 20px;">Doctor</h3>
                         </span>
                     </a>
                 </div>

@@ -27,7 +27,13 @@ class Login extends CI_Controller {
         if ($num_row > 0) {
             $_select = array('*');
             $data = $this->Main_model->rowdata(TBL_USER, $_where, $_select);
-            $this->session->set_userdata(array('user_id' => $data->id, 'username' => $data->s_username, 'firstname' => $data->s_first_name , 'lastname' => $data->s_last_name, 'type_user' => $data->i_type));
+//            $this->session->set_userdata(array('user_id' => $data->id, 'username' => $data->s_username, 'firstname' => $data->s_first_name , 'lastname' => $data->s_last_name, 'type_user' => $data->i_type));
+        
+            setcookie("user_id", $data->id, time() + 3600, '/');
+            setcookie("username", $data->s_username, time()+3600, '/');
+            setcookie("firstname", $data->s_first_name, time()+3600, '/');
+            setcookie("lastname", $data->s_last_name, time()+3600, '/');
+            setcookie("type_user", $data->i_type, time()+3600, '/');
         }
 
 
