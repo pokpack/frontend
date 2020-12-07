@@ -32,7 +32,7 @@ class Index extends CI_Controller {
 //        exit();
 //        $this->load->view('template/test');
 
-        $_where = array('id' => $this->session->userdata('user_id'));
+        $_where = array('id' => $_COOKIE[hn]);
         $_select = array('i_hn');
 //                                                        
         $user = $this->Main_model->rowdata(TBL_PATIEN, $_where, $_select);

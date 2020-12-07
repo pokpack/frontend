@@ -95,71 +95,64 @@ $dis = $this->Main_model->rowdata(TBL_DIAGNOSIS, $_where, $_select);
             <table class="table table-bordered table-nowrap mb-0">
                 <tr>
                     <th class="text-nowrap" scope="row" width="200">Date and time</th>
-                    <td><?= $datetime; ?></td>
+                    <td colspan="7"><?= $datetime; ?></td>
                 </tr>
                 <tr>
                     <th class="text-nowrap" scope="row" width="200">Level Severity</th>
-                    <td><?= $data->level; ?></td>
+                    <td colspan="7"><?= $data->level; ?></td>
                 </tr>
                 <tr>
                     <th class="text-nowrap" scope="row">How to get hospital</th>
-                    <td><?= $data->h_t_hospital; ?></td>
+                    <td colspan="7"><?= $data->h_t_hospital; ?></td>
                 </tr>
                 <tr>
                     <th class="text-nowrap" scope="row">Come by</th>
-                    <td><?= $data->come_by; ?></td>
+                    <td colspan="7"><?= $data->come_by; ?></td>
                 </tr>
                 <tr>
                     <th class="text-nowrap" scope="row">LMP</th>
-                    <td colspan="5"><?= $data->lmp; ?></td>
+                    <td colspan="7"><?= $data->lmp; ?></td>
                 </tr>
                 <tr>
                     <th class="text-nowrap" scope="row">Symptoms</th>
-                    <td colspan="5"><?= $data->symptoms; ?></td>
+                    <td colspan="7"><?= $data->symptoms; ?></td>
                 </tr>
                 <tr>
                     <th class="text-nowrap" scope="row">Current symptoms <br/>/ first symptoms <br/>/ trauma</th>
-                    <td colspan="5"><?= $data->all_symptoms; ?></td>
+                    <td colspan="7"><?= $data->all_symptoms; ?></td>
                 </tr>
                 <tr>
                     <th class="text-nowrap" scope="row">Glasgow coma scale (GCS)</th>
                     <td colspan="5"><?= $data->gcs; ?></td>
-                </tr>
-                <tr>
                     <th class="text-nowrap" scope="row">E (Eye opening)</th>
                     <td colspan="5"><?= $data->e; ?></td>
                 </tr>
+               
                 <tr>
                     <th class="text-nowrap" scope="row">V (Verbal response)</th>
                     <td colspan="5"><?= $data->v; ?></td>
-                </tr>
-                <tr>
                     <th class="text-nowrap" scope="row">M (Motor response)</th>
                     <td colspan="5"><?= $data->m; ?></td>
                 </tr>
                 <tr>
                     <th class="text-nowrap" scope="row">BT</th>
                     <td colspan="5"><?= $data->bt; ?></td>
-                </tr>
-                <tr>
                     <th class="text-nowrap" scope="row">BP</th>
                     <td colspan="5"><?= $data->bp; ?></td>
                 </tr>
                 <tr>
                     <th class="text-nowrap" scope="row">PR</th>
                     <td colspan="5"><?= $data->pr; ?></td>
-                </tr>
-                <tr>
                     <th class="text-nowrap" scope="row">O2sat</th>
                     <td colspan="5"><?= $data->o2sat; ?></td>
                 </tr>
                 <tr>
                     <th class="text-nowrap" scope="row">Pain Score (PS)</th>
-                    <td colspan="5"><?= $data->ps; ?></td>
+                    <td colspan="7"><?= $data->ps; ?></td>
                 </tr>
                 <tr>
                     <th class="text-nowrap" scope="row">Nurse record</th>
-                    <td colspan="5"><?= $nurse_recorder->s_first_name . " " . $nurse_recorder->s_last_name; ?></td>
+                    <td colspan="7"><?= $recorder->s_first_name . " " . $recorder->s_last_name; ?></td>
                 </tr>
             </table>
         </div>

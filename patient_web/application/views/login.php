@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" style="background-color: #fd6b61;">
+<html lang="en" style="background-color: #ffbbb6;">
 
     
 <!-- Mirrored from themesbrand.com/minible/layouts/vertical/auth-login.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 20 Nov 2020 08:19:12 GMT -->
@@ -22,7 +22,7 @@
 
     </head>
 
-    <body class="authentication-bg" style="background-color: #fd6b61;">
+    <body class="authentication-bg" style="background-color: #ffbbb6;">
 
 <!--        <div class="home-btn d-none d-sm-block">
             <a href="index-2.html" class="text-dark"><i class="mdi mdi-home-variant h2"></i></a>

@@ -1,3 +1,7 @@
+<?php
+$ob = json_decode($data);
+?>
+
 <!-- ============================================================== -->
 <!-- Start right Content here -->
 <!-- ============================================================== -->
@@ -27,13 +31,14 @@
             <!-- end page title -->
 
             <div class="row">
+
                 <div class="col-md-6 col-xl-3">
                     <div class="card">
                         <div class="card-body">
 
                             <div>
                                 <p class="text-muted mb-0">Total Admit Case</p>
-                                <h4 class="mb-1 mt-1"><span data-plugin="counterup"><?=count($data);?></span></h4>
+                                <h4 class="mb-1 mt-1"><span data-plugin="counterup"><?= count($ob); ?></span></h4>
 
                             </div>
                             <!--<p class="text-muted mt-3 mb-0"><span class="text-success mr-1"><i class="mdi mdi-arrow-up-bold ml-1"></i>2.65%</span> since last week</p>-->
@@ -47,21 +52,21 @@
 
                             <div>
                                 <p class="text-muted mb-0">Total Treat Case</p>
-                                <h4 class="mb-1 mt-1"><span data-plugin="counterup" id="count_treat_case"><?=count($treat);?></span></h4>
+                                <h4 class="mb-1 mt-1"><span data-plugin="counterup" id="count_treat_case"><?= count($treat); ?></span></h4>
 
                             </div>
                             <!--<p class="text-muted mt-3 mb-0"><span class="text-success mr-1"><i class="mdi mdi-arrow-up-bold ml-1"></i>2.65%</span> since last week</p>-->
                         </div>
                     </div>
                 </div> <!-- end col-->
-                
+
                 <div class="col-md-6 col-xl-3">
                     <div class="card">
                         <div class="card-body">
 
                             <div>
                                 <p class="text-muted mb-0">Total History Case</p>
-                                <h4 class="mb-1 mt-1"><span data-plugin="counterup" id="count_his_case"><?=count($his);?></span></h4>
+                                <h4 class="mb-1 mt-1"><span data-plugin="counterup" id="count_his_case"><?= count($his); ?></span></h4>
 
                             </div>
                             <!--<p class="text-muted mt-3 mb-0"><span class="text-success mr-1"><i class="mdi mdi-arrow-up-bold ml-1"></i>2.65%</span> since last week</p>-->
@@ -77,7 +82,6 @@
                         <div class="card-body">
                             <div style="margin-bottom: 20px;" align="center">
                                 <?php
-                                $ob = json_decode($data);
 //                                print_r($ob);
                                 ?>
                                 <a>
@@ -109,27 +113,27 @@
 
                             <div class="tab-content p-3 text-muted">
                                 <div class="tab-pane active" id="navpills-home" role="tabpanel">
-<!--                                    <div style="margin: 10px;">
-                                        <div data-repeater-list="group-a">
-                                            <div data-repeater-item="" class="row">
-                                                <div class="form-group col-lg-2">
-                                                    <label for="emrId">EMR Id</label>
-                                                    <input type="number" id="emr" name="emrId" class="form-control" onkeyup="searchEmr(this.value, 'admit');">
-                                                </div>
-
-                                                <div class="form-group col-lg-2">
-                                                    <label for="hn">HN</label>
-                                                    <input type="number" id="hn" class="form-control"  onkeyup="searchHn(this.value, 'admit');">
-                                                </div>
-
-                                                <div class="form-group col-lg-2">
-                                                    <label for="subject">Severity</label>
-                                                    <input type="text" id="severity" name="severity" class="form-control" onkeyup="searchSeverity(this.value, 'admit');">
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                    </div>-->
+                                    <!--                                    <div style="margin: 10px;">
+                                                                            <div data-repeater-list="group-a">
+                                                                                <div data-repeater-item="" class="row">
+                                                                                    <div class="form-group col-lg-2">
+                                                                                        <label for="emrId">EMR Id</label>
+                                                                                        <input type="number" id="emr" name="emrId" class="form-control" onkeyup="searchEmr(this.value, 'admit');">
+                                                                                    </div>
+                                    
+                                                                                    <div class="form-group col-lg-2">
+                                                                                        <label for="hn">HN</label>
+                                                                                        <input type="number" id="hn" class="form-control"  onkeyup="searchHn(this.value, 'admit');">
+                                                                                    </div>
+                                    
+                                                                                    <div class="form-group col-lg-2">
+                                                                                        <label for="subject">Severity</label>
+                                                                                        <input type="text" id="severity" name="severity" class="form-control" onkeyup="searchSeverity(this.value, 'admit');">
+                                                                                    </div>
+                                                                                </div>
+                                    
+                                                                            </div>
+                                                                        </div>-->
 
                                     <div style="margin: 10px;">
                                         <h4 class="card-title">Admit list table</h4>
@@ -440,7 +444,7 @@
                 </button>
             </div>
             <div class="modal-body" id="body_his">
-                
+
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
     </div>
