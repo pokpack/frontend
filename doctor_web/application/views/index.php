@@ -120,11 +120,14 @@ $ob = json_decode($data);
 
                                                         $date = date_create($val->datetime);
                                                         $datetime = date_format($date, "Y-m-d H:i:s");
+                                                        
+                                                        $first_name = $this->Main_model->text_decode($user->s_first_name);
+                                                        $last_name = $this->Main_model->text_decode($user->s_last_name);
                                                         ?>
                                                         <tr>
                                                             <td><?= $num1 += 1; ?></td>
                                                             <td style="text-align: center;"><?= $user->i_hn; ?></td>
-                                                            <td><?= $user->s_first_name . " " . $user->s_last_name; ?></td>
+                                                            <td><?= $first_name . " " . $last_name; ?></td>
                                                             <td style="text-align: center;"><?= $val->level; ?></td>
                                                             <td><?= $datetime; ?></td>
                                                             <td><?= $val->symptoms; ?></td>

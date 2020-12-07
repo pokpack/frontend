@@ -20,7 +20,10 @@ class Login extends CI_Controller {
 //        echo json_encode($table);
 //        exit();
 //       $password = $this->Main_model->decrypts($_POST[s_password]);
-        $_where = array('s_username' => $_POST[s_username], 's_password' => $_POST[s_password], 'i_type' => $type_user);
+       $user = $this->Main_model->text_encode($_POST[s_username]);
+       $pass = $this->Main_model->text_encode($_POST[s_password]);
+       
+        $_where = array('s_username' => $user, 's_password' =>$pass, 'i_type' => $type_user);
         
 //        $arr_where = $_where;
         $num_row = $this->Main_model->num_row(TBL_USER, $_where);

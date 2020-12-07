@@ -30,11 +30,11 @@ $recorder = $this->Main_model->rowdata(TBL_USER, $_where, $_select);
             </tr>
             <tr>
                 <th class="text-nowrap" scope="row" width="200">Name</th>
-                <td><?= $user->s_first_name . " " . $user->s_last_name; ?></td>
+                <td><?= $this->Main_model->text_decode($user->s_first_name) . " " . $this->Main_model->text_decode($user->s_last_name); ?></td>
             </tr>
             <tr>
                 <th class="text-nowrap" scope="row">Gender</th>
-                <td><?= $user->s_gender; ?></td>
+                <td><?= $this->Main_model->text_decode($user->s_gender); ?></td>
             </tr>
             <tr>
                 <th class="text-nowrap" scope="row">Weight</th>
@@ -50,15 +50,15 @@ $recorder = $this->Main_model->rowdata(TBL_USER, $_where, $_select);
             </tr>
             <tr>
                 <th class="text-nowrap" scope="row">Blood type</th>
-                <td colspan="5"><?= $user->s_blood; ?></td>
+                <td colspan="5"><?= $this->Main_model->text_decode($user->s_blood); ?></td>
             </tr>
             <tr>
                 <th class="text-nowrap" scope="row">Drug allergy</th>
-                <td colspan="5"><?= $user->s_allergy; ?></td>
+                <td colspan="5"><?= $this->Main_model->text_decode($user->s_allergy); ?></td>
             </tr>
             <tr>
                 <th class="text-nowrap" scope="row">Congenital disease</th>
-                <td colspan="5"><?= $user->s_disease; ?></td>
+                <td colspan="5"><?= $this->Main_model->text_decode($user->s_disease); ?></td>
             </tr>
 
         </table>

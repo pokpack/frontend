@@ -56,11 +56,14 @@
 
                     $date = date_create($val->datetime);
                     $datetime = date_format($date, "Y-m-d H:i:s");
+
+                    $first_name = $this->Main_model->text_decode($user->s_first_name);
+                    $last_name = $this->Main_model->text_decode($user->s_last_name);
                     ?>
                     <tr id="tr_treat_<?= $val->id; ?>" class="tr-treat">
                         <td><?= $num += 1; ?></td>
                         <td align="center"><span data-id="<?= $val->id; ?>" class="text-treat-hn"><?= $user->i_hn; ?></td>
-                        <td><?= $user->s_first_name . " " . $user->s_last_name; ?></td>
+                        <td><?= $first_name . " " . $last_name; ?></td>
                         <td><span data-id="<?= $val->id; ?>" class="text-treat-sev"><?= $val->level; ?></span></td>
                         <td><?= $datetime; ?></td>
                         <td><?= $val->symptoms; ?></td>
@@ -95,6 +98,6 @@
 </div>
 
 <script>
-    $('#count_treat_case').text('<?=count($data);?>');
+    $('#count_treat_case').text('<?= count($data); ?>');
     $("#tb_treat").DataTable();
 </script>

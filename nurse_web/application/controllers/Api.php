@@ -111,5 +111,7 @@ class Api extends CI_Controller {
         $data = $this->Api_model->post_treat();
         echo $data;
     }
+    
+   
 
 }

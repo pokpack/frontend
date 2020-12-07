@@ -638,6 +638,14 @@ class Main_model extends CI_Model {
             return $original_plaintext;
         }
     }
+    
+    public function text_encode($txt) {
+        return base64_encode($txt);
+    }
+    
+    public function text_decode($txt) {
+        return base64_decode($txt);
+    }
   /*
    * 
    * 	Function

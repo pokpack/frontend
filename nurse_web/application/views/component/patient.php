@@ -17,11 +17,11 @@
                 </tr>
                 <tr>
                     <th class="text-nowrap" scope="row">Gender</th>
-                    <td><?=$data->s_gender;?></td>
+                    <td><?= $this->Main_model->text_decode($data->s_gender);?> </td>
                 </tr>
                 <tr>
                     <th class="text-nowrap" scope="row">Weight</th>
-                    <td><?=$data->i_weight;?></td>
+                    <td><?= $data->i_weight;?></td>
                 </tr>
                 <tr>
                     <th class="text-nowrap" scope="row">Height</th>
@@ -33,15 +33,15 @@
                 </tr>
                 <tr>
                     <th class="text-nowrap" scope="row">Blood type</th>
-                    <td colspan="5"><?=$data->s_blood;?></td>
+                    <td colspan="5"><?= $this->Main_model->text_decode($data->s_blood); ?></td>
                 </tr>
                 <tr>
                     <th class="text-nowrap" scope="row">Drug allergy</th>
-                    <td colspan="5"><?=$data->s_allergy;?></td>
+                    <td colspan="5"><?= $this->Main_model->text_decode($data->s_allergy); ?></td>
                 </tr>
                 <tr>
                     <th class="text-nowrap" scope="row">Congenital disease</th>
-                    <td colspan="5"><?=$data->s_disease;?></td>
+                    <td colspan="5"><?= $this->Main_model->text_decode($data->s_disease);?></td>
                 </tr>
 
         </table>

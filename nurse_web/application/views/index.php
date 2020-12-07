@@ -165,7 +165,8 @@ $ob = json_decode($data);
                                                         $_select = array('i_hn,s_first_name,s_last_name');
 //                                                        print_r($_where);
                                                         $user = $this->Main_model->rowdata(TBL_PATIEN, $_where, $_select);
-
+                                                        $first_name = $this->Main_model->text_decode($user->s_first_name);
+                                                        $last_name = $this->Main_model->text_decode($user->s_last_name);
                                                         $date = date_create($val->datetime);
                                                         $datetime = date_format($date, "Y-m-d H:i:s");
                                                         ?>
@@ -173,7 +174,7 @@ $ob = json_decode($data);
                                                     <input type="hidden" value="<?= $val->id; ?>" />
                                                     <td><?= $num1 += 1; ?></td>
                                                     <td style="text-align: center;"><span data-id="<?= $val->id; ?>" class="text-admit-hn"><?= $user->i_hn; ?></span></td>
-                                                    <td><?= $user->s_first_name . " " . $user->s_last_name; ?></td>
+                                                    <td><?= $first_name . " " . $last_name; ?></td>
                                                     <td style="text-align: center;"><span data-id="<?= $val->id; ?>" class="text-admit-sev"><?= $val->level; ?></span></td>
                                                     <td><?= $datetime; ?></td>
                                                     <td><?= $val->symptoms; ?></td>
@@ -256,8 +257,11 @@ $ob = json_decode($data);
                                     $_select = array('id, s_first_name, s_last_name, s_idcard, i_hn');
                                     $patien = $this->Main_model->fetch_data('', '', TBL_PATIEN, $_where, $_select);
                                     foreach ($patien as $key => $val) {
+                                        $first_name = $this->Main_model->text_decode($val->s_first_name);
+                                        $last_name = $this->Main_model->text_decode($val->s_last_name);
+                                        $idcard = $this->Main_model->text_decode($val->s_idcard);
                                         ?>
-                                        <option value="<?= $val->i_hn; ?>"><?= $val->s_first_name . " " . $val->s_last_name . " : " . $val->s_idcard; ?></option>
+                                        <option value="<?= $val->i_hn; ?>"><?= $first_name . " " . $last_name . " : " . $idcard; ?></option>
                                     <?php }
                                     ?>
                                 </select>
