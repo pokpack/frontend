@@ -82,31 +82,31 @@ $ob = json_decode($data);
                         <div class="card-body">
                             <div style="margin-bottom: 20px;" align="center">
                                 <?php
-//                                print_r($ob);
+                                //                                print_r($ob);
                                 ?>
                                 <a>
                                     <button type="button" class="btn btn-success btn-rounded waves-effect waves-light" data-toggle="modal" data-target="#lg_modal" style="width: 200px;">
                                         <i class="fas fa-plus"></i>&nbsp;&nbsp;Admit
                                     </button>
-                                </a>    
+                                </a>
                             </div>
                             <ul class="nav nav-pills" role="tablist">
                                 <li class="nav-item waves-effect waves-light">
                                     <a class="nav-link active" data-toggle="tab" href="#navpills-home" role="tab">
                                         <span class="d-block d-sm-none"><i class="fas fa-home"></i></span>
-                                        <span class="d-none d-sm-block">Admit</span> 
+                                        <span class="d-none d-sm-block">Admit</span>
                                     </a>
                                 </li>
                                 <li class="nav-item waves-effect waves-light">
-                                    <a class="nav-link" data-toggle="tab" href="#navpills-profile" role="tab"  onclick="tabTreat();">
+                                    <a class="nav-link" data-toggle="tab" href="#navpills-profile" role="tab" onclick="tabTreat();">
                                         <span class="d-block d-sm-none"><i class="far fa-user"></i></span>
-                                        <span class="d-none d-sm-block">Treat</span> 
+                                        <span class="d-none d-sm-block">Treat</span>
                                     </a>
                                 </li>
                                 <li class="nav-item waves-effect waves-light">
                                     <a class="nav-link" data-toggle="tab" href="#navpills-messages" role="tab" onclick="tabHistory();">
                                         <span class="d-block d-sm-none"><i class="far fa-envelope"></i></span>
-                                        <span class="d-none d-sm-block">History</span>   
+                                        <span class="d-none d-sm-block">History</span>
                                     </a>
                                 </li>
                             </ul>
@@ -138,7 +138,7 @@ $ob = json_decode($data);
                                     <div style="margin: 10px;">
                                         <h4 class="card-title">Admit list table</h4>
                                         <p class="card-title-desc">
-            <!--                                Create responsive tables by wrapping any <code>.table</code> in <code>.table-responsive</code>
+                                            <!--                                Create responsive tables by wrapping any <code>.table</code> in <code>.table-responsive</code>
                                             to make them scroll horizontally on small devices (under 768px).-->
                                         </p>
 
@@ -163,26 +163,26 @@ $ob = json_decode($data);
 
                                                         $_where = array('i_hn' => $val->hn);
                                                         $_select = array('i_hn,s_first_name,s_last_name');
-//                                                        print_r($_where);
+                                                        //                                                        print_r($_where);
                                                         $user = $this->Main_model->rowdata(TBL_PATIEN, $_where, $_select);
                                                         $first_name = $this->Main_model->text_decode($user->s_first_name);
                                                         $last_name = $this->Main_model->text_decode($user->s_last_name);
                                                         $date = date_create($val->datetime);
                                                         $datetime = date_format($date, "Y-m-d H:i:s");
-                                                        ?>
+                                                    ?>
                                                         <tr id="tr_admit_<?= $val->id; ?>" class="tr-admit">
-                                                    <input type="hidden" value="<?= $val->id; ?>" />
-                                                    <td><?= $num1 += 1; ?></td>
-                                                    <td style="text-align: center;"><span data-id="<?= $val->id; ?>" class="text-admit-hn"><?= $user->i_hn; ?></span></td>
-                                                    <td><?= $first_name . " " . $last_name; ?></td>
-                                                    <td style="text-align: center;"><span data-id="<?= $val->id; ?>" class="text-admit-sev"><?= $val->level; ?></span></td>
-                                                    <td><?= $datetime; ?></td>
-                                                    <td><?= $val->symptoms; ?></td>
-                                                    <td style="text-align: center;"><i class="fas fa-check"></i></td>
-                                                    <td style="text-align: center;"><span data-id="<?= $val->id; ?>" class="text-admit-emr"><?= $val->emrId; ?></span></td>
-                                                    </tr>
-                                                <?php }
-                                                ?>
+                                                            <input type="hidden" value="<?= $val->id; ?>" />
+                                                            <td><?= $num1 += 1; ?></td>
+                                                            <td style="text-align: center;"><span data-id="<?= $val->id; ?>" class="text-admit-hn"><?= $user->i_hn; ?></span></td>
+                                                            <td><?= $first_name . " " . $last_name; ?></td>
+                                                            <td style="text-align: center;"><span data-id="<?= $val->id; ?>" class="text-admit-sev"><?= $val->level; ?></span></td>
+                                                            <td><?= $datetime; ?></td>
+                                                            <td><?= $val->symptoms; ?></td>
+                                                            <td style="text-align: center;"><i class="fas fa-check"></i></td>
+                                                            <td style="text-align: center;"><span data-id="<?= $val->id; ?>" class="text-admit-emr"><?= $val->emrId; ?></span></td>
+                                                        </tr>
+                                                    <?php }
+                                                    ?>
                                                 </tbody>
                                             </table>
                                         </div>
@@ -195,7 +195,7 @@ $ob = json_decode($data);
                                     </div>
                                 </div>
 
-                                <div class="tab-pane" id="navpills-messages" role="tabpanel" >
+                                <div class="tab-pane" id="navpills-messages" role="tabpanel">
                                     <div class="tab-pane active" role="tabpanel" id="body_tab_his">
                                         ...
                                     </div>
@@ -219,7 +219,9 @@ $ob = json_decode($data);
         <div class="container-fluid">
             <div class="row">
                 <div class="col-sm-6">
-                    <script>document.write(new Date().getFullYear())</script> © Minible.
+                    <script>
+                        document.write(new Date().getFullYear())
+                    </script> © Minible.
                 </div>
                 <div class="col-sm-6">
                     <div class="text-sm-right d-none d-sm-block">
@@ -243,12 +245,11 @@ $ob = json_decode($data);
             </div>
             <div class="modal-body">
                 <form id="form_admit" method="post">
-                    <!--<input type="hidden" value="<?= $this->session->userdata('user_id'); ?>" name="nurse_record" />-->
-                    <input type="hidden" value="<?= $_COOKIE[user_id]; ?>" name="nurse_record" />
+                    <!--<input type="hidden" value="<?= $this->session->userdata('nurse_user_id'); ?>" name="nurse_record" />-->
+                    <input type="hidden" value="<?= $_COOKIE[nurse_user_id]; ?>" name="nurse_record" />
                     <div class="" style="padding: 15px; ">
                         <div class="form-group row">
-                            <label for="example-datetime-local-input" 
-                                   class="col-md-2 col-form-label">Patient</label>
+                            <label for="example-datetime-local-input" class="col-md-2 col-form-label">Patient</label>
                             <div class="col-md-10">
                                 <select class="form-control select2" style="width: 100%;" name="hn" onchange="select_patient(this);">
                                     <option>Select Patient</option>
@@ -260,7 +261,7 @@ $ob = json_decode($data);
                                         $first_name = $this->Main_model->text_decode($val->s_first_name);
                                         $last_name = $this->Main_model->text_decode($val->s_last_name);
                                         $idcard = $this->Main_model->text_decode($val->s_idcard);
-                                        ?>
+                                    ?>
                                         <option value="<?= $val->i_hn; ?>"><?= $first_name . " " . $last_name . " : " . $idcard; ?></option>
                                     <?php }
                                     ?>
@@ -281,8 +282,8 @@ $ob = json_decode($data);
                         </div>
                         <div class="form-group row">
                             <label class="col-md-2 col-form-label">Level Severity</label>
-                            <div class="col-md-10"> 
-                                <input class="form-control" type="number" value="" name="level" >
+                            <div class="col-md-10">
+                                <input class="form-control" type="number" value="" name="level">
                             </div>
                         </div>
                         <div class="form-group row">
@@ -407,7 +408,7 @@ $ob = json_decode($data);
                         <div class="form-group row">
                             <label for="example-text-input" class="col-md-2 col-form-label">Pain Score (PS)</label>
                             <div class="col-md-10">
-                                <input class="form-control" type="number" value=""name="ps">
+                                <input class="form-control" type="number" value="" name="ps">
                             </div>
                         </div>
                     </div>
@@ -420,7 +421,7 @@ $ob = json_decode($data);
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
     </div>
-</div>   
+</div>
 
 <div class="modal fade bs-example-modal-lg" tabindex="-1" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;" id="lg_modal_2">
     <div class="modal-dialog modal-lg">
