@@ -1,13 +1,15 @@
 <?php
 
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class Api extends CI_Controller {
+class Api extends CI_Controller
+{
 
-    public function __construct() {
+    public function __construct()
+    {
         parent::__construct();
         $this->load->library('pagination');
-	$this->load->model('Api_model');
+        $this->load->model('Api_model');
         $this->load->model('Main_model');
     }
 
@@ -26,13 +28,13 @@ class Api extends CI_Controller {
      * map to /index.php/welcome/<method_name>
      * @see https://codeigniter.com/user_guide/general/urls.html
      */
-    public function test() {
+    public function test()
+    {
 
         $curl = curl_init();
 
         curl_setopt_array($curl, array(
-            CURLOPT_PORT => "3001",
-            CURLOPT_URL => "http://localhost:3001/EMRs/",
+            CURLOPT_URL => getenv('EMR_API_URL') . "/EMRs/",
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING => "",
             CURLOPT_MAXREDIRS => 10,
@@ -53,17 +55,17 @@ class Api extends CI_Controller {
 
         echo $response;
     }
-    
-    public function post_exn() {
-        
+
+    public function post_exn()
+    {
+
         $data = $this->Api_model->post_exn();
-        echo json_encode($data);
-        
-    }
-    
-    public function post_treat() {
-        $data = $this->Api_model->post_treat();
         echo json_encode($data);
     }
 
+    public function post_treat()
+    {
+        $data = $this->Api_model->post_treat();
+        echo json_encode($data);
+    }
 }

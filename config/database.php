@@ -65,6 +65,7 @@ $query_builder = TRUE;
 $db['default'] = array(
 	'dsn'	=> '',
 	//	'hostname' => '103.13.30.137',
+	// getenv('EMR_API_URL')
 	'hostname' => getenv('DB_URL'),
 	'username' => getenv('DB_USER_NAME'),
 	'password' => getenv('DB_PASSWORD'),

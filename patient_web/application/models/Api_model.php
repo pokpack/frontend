@@ -1,11 +1,13 @@
 <?php
 
-class Api_model extends CI_Model {
+class Api_model extends CI_Model
+{
 
     //public $name;
     //public $description;
 
-    public function __construct() {
+    public function __construct()
+    {
         parent::__construct();
     }
 
@@ -17,12 +19,12 @@ class Api_model extends CI_Model {
      */
 
     // ==============================================================================================
-    public function get_his($hn) {
+    public function get_his($hn)
+    {
 
         $curl = curl_init();
         curl_setopt_array($curl, array(
-            CURLOPT_PORT => "3001",
-            CURLOPT_URL => "http://localhost:3001/api/" . $hn . "/history",
+            CURLOPT_URL => getenv('EMR_API_URL') . "/api/" . $hn . "/history",
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING => "",
             CURLOPT_MAXREDIRS => 10,
@@ -44,13 +46,13 @@ class Api_model extends CI_Model {
         return $response;
     }
 
-    public function get_emr_id($hn, $emr) {
+    public function get_emr_id($hn, $emr)
+    {
 
         $curl = curl_init();
 
         curl_setopt_array($curl, array(
-            CURLOPT_PORT => "3001",
-            CURLOPT_URL => "http://localhost:3001/api/" . $hn . "/emr/" . $emr,
+            CURLOPT_URL => getenv('EMR_API_URL') . "/api/" . $hn . "/emr/" . $emr,
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING => "",
             CURLOPT_MAXREDIRS => 10,
