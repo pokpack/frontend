@@ -285,7 +285,7 @@
                             <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown"
                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="d-nonex d-xl-inline-block ml-1 font-weight-medium font-size-15">
-                                                                   <?=$_COOKIE[firstname]." ".$_COOKIE[lastname];?></span>
+                                                                   <?=$_COOKIE[nurse_firstname]." ".$_COOKIE[nurse_lastname];?></span>
                                 <img class="rounded-circle header-profile-user" src="<?= base_url(); ?>assets/images/users/user.png"
                                      alt="Header Avatar">
                                 

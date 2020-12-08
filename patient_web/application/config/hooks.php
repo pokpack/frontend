@@ -24,9 +24,9 @@ $hook['post_controller_constructor'][] = array(
         'filepath' => 'hooks'
 );
 
-$hook['post_controller_constructor'][] = array(
-        'class'    => 'Checktype',
-	    'function' => 'check_type_user',
-	    'filename' => 'checktype.php',
-        'filepath' => 'hooks'
-);
+//$hook['post_controller_constructor'][] = array(
+//        'class'    => 'Checktype',
+//	    'function' => 'check_type_user',
+//	    'filename' => 'checktype.php',
+//        'filepath' => 'hooks'
+//);

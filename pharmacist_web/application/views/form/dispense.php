@@ -103,7 +103,7 @@ $doctor_recorder = $this->Main_model->rowdata(TBL_USER, $_where, $_select);
                     <td colspan="7"><?= $data->symptoms; ?></td>
                 </tr>
                 <tr>
-                    <th class="text-nowrap" scope="row">Current symptoms <br />/ first symptoms <br />/ trauma</th>
+                    <th class="text-nowrap" scope="row">Current symptoms <br/>/ first symptoms <br/>/ trauma</th>
                     <td colspan="7"><?= $data->all_symptoms; ?></td>
                 </tr>
                 <tr>
@@ -112,7 +112,7 @@ $doctor_recorder = $this->Main_model->rowdata(TBL_USER, $_where, $_select);
                     <th class="text-nowrap" scope="row">E (Eye opening)</th>
                     <td colspan="5"><?= $data->e; ?></td>
                 </tr>
-
+               
                 <tr>
                     <th class="text-nowrap" scope="row">V (Verbal response)</th>
                     <td colspan="5"><?= $data->v; ?></td>
@@ -153,7 +153,7 @@ $doctor_recorder = $this->Main_model->rowdata(TBL_USER, $_where, $_select);
             <table class="table table-bordered table-nowrap mb-0">
                 <tr>
                     <th class="text-nowrap" scope="row" width="200">Treatment</th>
-                    <td><?= $data->treat; ?></td>
+                    <td><?=$data->treat;?></td>
                 </tr>
                 <tr>
                     <th class="text-nowrap" scope="row" width="200">Drug</th>
@@ -163,7 +163,7 @@ $doctor_recorder = $this->Main_model->rowdata(TBL_USER, $_where, $_select);
                             $_where = array('id' => $val->id);
                             $_select = array('s_name');
                             $data_drug = $this->Main_model->rowdata(TBL_DRUG, $_where, $_select);
-                        ?>
+                            ?>
                             <p><?= $data_drug->s_name; ?> : <?= $val->num; ?></p>
                         <?php }
                         ?>
@@ -180,8 +180,8 @@ $doctor_recorder = $this->Main_model->rowdata(TBL_USER, $_where, $_select);
 <form id="form_dis" method="post">
     <input name="hn" value="<?= $_POST[hn]; ?>" type="hidden" />
     <input name="emr" value="<?= $_POST[emr]; ?>" type="hidden" />
-    <input type="hidden" value="<?= $_COOKIE[pharmacist_user_id]; ?>" name="pharmacist_record" />
-    <!--<input type="hidden" value="<?= $this->session->userdata('pharmacist_user_id'); ?>" name="pharmacist_record" />-->
+    <input type="hidden" value="<?= $_COOKIE[user_id]; ?>" name="pharmacist_record" />
+    <!--<input type="hidden" value="<?= $this->session->userdata('phc_user_id'); ?>" name="pharmacist_record" />-->
     <input type="hidden" value="<?= $data->doctor_record; ?>" name="doctor_record" />
     <input type="hidden" value="<?= $data->nurse_record; ?>" name="nurse_record" />
     <div class="" style="padding: 15px; padding-bottom: 0px;">
@@ -191,7 +191,7 @@ $doctor_recorder = $this->Main_model->rowdata(TBL_USER, $_where, $_select);
                     <i class="fas fa-plus-circle"></i></button></label>
 
             <div class="col-md-10" id="box_drug">
-                <input type="hidden" value="<?= count($data->drug); ?>" id="num_drug" />
+                <input type="hidden" value="<?=count($data->drug);?>" id="num_drug" />
                 <?php
                 $num = 0;
                 foreach ($data->drug as $key => $val) {
@@ -199,8 +199,8 @@ $doctor_recorder = $this->Main_model->rowdata(TBL_USER, $_where, $_select);
                     $_select = array('s_name');
                     $data_drug = $this->Main_model->rowdata(TBL_DRUG, $_where, $_select);
                     $num = $num + 1;
-                ?>
-                    <div class="row row_drug" style="margin-bottom: 15px;" id="box_drug_<?= $num; ?>">
+                    ?>
+                <div class="row row_drug" style="margin-bottom: 15px;" id="box_drug_<?=$num;?>">
                         <div class="col-md-8">
                             <select class="form-control" name="drug[id][]">
                                 <option></option>
@@ -209,13 +209,13 @@ $doctor_recorder = $this->Main_model->rowdata(TBL_USER, $_where, $_select);
                                 $_select = array('*');
                                 $drug = $this->Main_model->fetch_data('', '', TBL_DRUG, $_where, $_select);
                                 foreach ($drug as $key => $val2) {
-                                    if ($val->id == $val2->id) {
+                                    if($val->id == $val2->id){
                                         $selected = "selected";
-                                    } else {
+                                    }else{
                                         $selected = "";
                                     }
-                                ?>
-                                    <option <?= $selected; ?> value="<?= $val2->id; ?>"><?= $val2->s_name; ?></option>
+                                    ?>
+                                    <option <?=$selected;?> value="<?= $val2->id; ?>"><?= $val2->s_name; ?></option>
                                 <?php } ?>
                             </select>
                         </div>
@@ -223,7 +223,7 @@ $doctor_recorder = $this->Main_model->rowdata(TBL_USER, $_where, $_select);
                             <input type="number" value="<?= $val->num; ?>" class="form-control" name="drug[num][]" />
                         </div>
                         <div class="col-md-1">
-                            <button type="button" class="btn btn-danger btn-sm waves-effect waves-light" style="margin: 5px;" onclick="deleteDrug(<?= $num; ?>);">
+                            <button type="button" class="btn btn-danger btn-sm waves-effect waves-light" style="margin: 5px;" onclick="deleteDrug(<?=$num;?>);">
                                 <i class="fas fa-trash"></i>
                             </button>
                         </div>

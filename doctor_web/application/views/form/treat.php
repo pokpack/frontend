@@ -108,7 +108,7 @@ $pharmacist_record = $this->Main_model->rowdata(TBL_USER, $_where, $_select);
                     <td colspan="7"><?= $data->symptoms; ?></td>
                 </tr>
                 <tr>
-                    <th class="text-nowrap" scope="row">Current symptoms <br />/ first symptoms <br />/ trauma</th>
+                    <th class="text-nowrap" scope="row">Current symptoms <br/>/ first symptoms <br/>/ trauma</th>
                     <td colspan="7"><?= $data->all_symptoms; ?></td>
                 </tr>
                 <tr>
@@ -117,7 +117,7 @@ $pharmacist_record = $this->Main_model->rowdata(TBL_USER, $_where, $_select);
                     <th class="text-nowrap" scope="row">E (Eye opening)</th>
                     <td colspan="5"><?= $data->e; ?></td>
                 </tr>
-
+               
                 <tr>
                     <th class="text-nowrap" scope="row">V (Verbal response)</th>
                     <td colspan="5"><?= $data->v; ?></td>
@@ -168,7 +168,7 @@ $pharmacist_record = $this->Main_model->rowdata(TBL_USER, $_where, $_select);
                             $_where = array('id' => $val->id);
                             $_select = array('s_name');
                             $data_drug = $this->Main_model->rowdata(TBL_DRUG, $_where, $_select);
-                        ?>
+                            ?>
                             <p><?= $data_drug->s_name; ?> : <?= $val->num; ?></p>
                         <?php }
                         ?>
@@ -192,7 +192,7 @@ $pharmacist_record = $this->Main_model->rowdata(TBL_USER, $_where, $_select);
     <input name="hn" value="<?= $_POST[hn]; ?>" type="hidden" />
     <input name="emr" value="<?= $_POST[emr]; ?>" type="hidden" />
     <input type="hidden" value="<?= $_COOKIE[doctor_user_id]; ?>" name="treat_record" />
-    <!--<input type="hidden" value="<?= $this->session->userdata('doctor_user_id'); ?>" name="treat_record" />-->
+    <!--<input type="hidden" value="<?= $this->session->userdata('user_id'); ?>" name="treat_record" />-->
     <!--<input type="hidden" value="<?= $data->doctor_record; ?>" name="doctor_record" />-->
     <!--<input type="hidden" value="<?= $data->nurse_record; ?>" name="nurse_record" />-->
     <div class="" style="padding: 15px; padding-bottom: 0px;">
@@ -206,8 +206,8 @@ $pharmacist_record = $this->Main_model->rowdata(TBL_USER, $_where, $_select);
                     $_select = array('*');
                     $dis = $this->Main_model->fetch_data('', '', TBL_DIAGNOSIS, $_where, $_select);
                     foreach ($dis as $key => $val) {
-                    ?>
-                        <option value="<?= $val->id; ?>"><?= $val->s_name; ?></option>
+                        ?>
+                    <option value="<?=$val->id;?>"><?=$val->s_name;?></option>
                     <?php } ?>
                 </select>
             </div>

@@ -287,7 +287,7 @@
                                 <img class="rounded-circle header-profile-user" src="<?=base_url();?>assets/images/users/user.png"
                                      alt="Header Avatar">
                                 <span class="d-nones d-xl-inline-block ml-1 font-weight-medium font-size-15">
-                                            <?=$_COOKIE[firstname]." ".$_COOKIE[lastname];?></span>
+                                            <?=$_COOKIE[patient_firstname]." ".$_COOKIE[patient_lastname];?></span>
                                 <i class="uil-angle-down d-none d-xl-inline-block font-size-15"></i>
                             </button>
                             <div class="dropdown-menu dropdown-menu-right">

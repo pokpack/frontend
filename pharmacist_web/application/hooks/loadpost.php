@@ -1,50 +1,48 @@
 <?php
 
-defined('BASEPATH') or exit('No direct script access allowed');
+defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Loadpost
-{
+class Loadpost {
 
-    public function __construct()
-    {
-        $this->CI = &get_instance();
+    public function __construct() {
+        $this->CI = & get_instance();
     }
 
-    //    public function check_login() {
-    //
-    //        if ($_COOKIE[SESS_ID] == NULL) {
-    //            if ($this->CI->session->userdata('pharmacist_user_id') == NULL) {
-    //                $class = $this->CI->router->fetch_class();
-    //                if ($class != 'login') {
-    //                    if ($class != 'lang' && $class != 'api') {
-    //                        redirect('login', 'refresh');
-    ////                        exit();
-    //                    }
-    //                }
-    //            } else {
-    //                
-    //            }
-    //        }
-    //    }
+//    public function check_login() {
+//
+//        if ($_COOKIE[SESS_ID] == NULL) {
+//            if ($this->CI->session->userdata('user_id') == NULL) {
+//                $class = $this->CI->router->fetch_class();
+//                if ($class != 'login') {
+//                    if ($class != 'lang' && $class != 'api') {
+//                        redirect('login', 'refresh');
+////                        exit();
+//                    }
+//                }
+//            } else {
+//                
+//            }
+//        }
+//    }
 
-    public function check_login()
-    {
-        $ci = &get_instance();
+    public function check_login() {
+        $ci = & get_instance();
         $ci->load->helper('cookie');
-        $user = $ci->input->cookie('pharmacist_user_id');
-        //        if ($_COOKIE[SESS_ID] == NULL) {
+        $user = $ci->input->cookie('phc_user_id');
+//        if ($_COOKIE[SESS_ID] == NULL) {
         if ($user == NULL or $user == "") {
             $class = $this->CI->router->fetch_class();
             if ($class != 'login') {
                 if ($class != 'lang' && $class != 'api') {
                     redirect('login', 'refresh');
-                    //                        exit();
+//                        exit();
                 }
             }
         } else {
-            //                echo $user." ++";
-            //                exit();
+//                echo $user." ++";
+//                exit();
         }
-        //        }
+//        }
     }
+
 }

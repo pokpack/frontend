@@ -1,5 +1,5 @@
 <?php
-defined('BASEPATH') or exit('No direct script access allowed');
+defined('BASEPATH') OR exit('No direct script access allowed');
 
 /*
 | -------------------------------------------------------------------
@@ -64,13 +64,12 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	//	'hostname' => '103.13.30.137',
-	'hostname' => getenv('DB_URL'),
-	'username' => getenv('DB_USER_NAME'),
-	'password' => getenv('DB_PASSWORD'),
-	'database' => getenv('DB_NAME'),
+//	'hostname' => '103.13.30.137',
+	'hostname' => 'localhost',
+	'username' => 'admin_newbooking',
+	'password' => 'vLS46+m2',
+	'database' => 'emr',
 	'dbdriver' => 'mysqli',
-	'port'     => 3306,
 	'dbprefix' => '',
 	'pconnect' => FALSE,
 	'db_debug' => TRUE,
