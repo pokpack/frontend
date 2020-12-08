@@ -20,6 +20,9 @@
         <!-- App Css-->
         <link href="<?=base_url();?>assets/css/app-dark.min.css" id="app-style" rel="stylesheet" type="text/css" />
 
+        <!-- Sweet Alert-->
+        <link href="<?= base_url(); ?>assets/libs/sweetalert2/sweetalert2.min.css" rel="stylesheet" type="text/css" />
+        
     </head>
 
     <body class="authentication-bg" style="//background-color: #f9ffbd;">
@@ -103,6 +106,11 @@
 
         <script src="<?=base_url();?>assets/js/app.js"></script>
 
+        <!-- Sweet Alerts js -->
+        <script src="<?= base_url(); ?>assets/libs/sweetalert2/sweetalert2.min.js"></script>
+
+        <!-- Sweet alert init js-->
+        <script src="<?= base_url(); ?>assets/js/pages/sweet-alerts.init.js"></script>
     </body>
 
 <!-- Mirrored from themesbrand.com/minible/layouts/vertical/auth-login.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 20 Nov 2020 08:19:12 GMT -->
@@ -124,6 +132,13 @@ $("#formData").submit(function (event) {
             console.log(res);
             if(res.row == 1){
                 window.location.href = base_url;
+            }else{
+                Swal.fire({
+                        title: "Error!",
+                        text: "Username or password wrong.",
+                        icon: "error",
+                        confirmButtonColor: "#5b73e8"
+                    });
             }
         },
         error: function (e) {
