@@ -68,7 +68,7 @@ class Api extends CI_Controller
         $emr = $config->s_value;
         $curl = curl_init();
 
-        $url = getenv('EMR_API_URL') . "api/" . $hn . "/admit/" . $emr;
+        $url = getenv('EMR_API_URL') . "/api/" . $hn . "/admit/" . $emr;
         //        $_POST[datetime] = date('Y-m-d H:i:s');
         curl_setopt_array($curl, array(
             CURLOPT_PORT => "3001",
