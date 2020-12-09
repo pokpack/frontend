@@ -42,9 +42,7 @@ class Api extends CI_Controller
             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
             CURLOPT_CUSTOMREQUEST => "GET",
             CURLOPT_HTTPHEADER => array(
-                "authorization: Bearer x]vf4yp0yf",
-                "cache-control: no-cache",
-                "postman-token: 008caa61-554a-6da0-0dac-c9055e295508"
+                "authorization: Bearer x]vf4yp0yf"
             ),
         ));
 

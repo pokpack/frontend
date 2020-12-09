@@ -34,9 +34,7 @@ class Api_model extends CI_Model
             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
             CURLOPT_CUSTOMREQUEST => "GET",
             CURLOPT_HTTPHEADER => array(
-                "authorization: Bearer x]vf4yp0yf",
-                "cache-control: no-cache",
-                "postman-token: a4ce0a83-4ebc-409e-82df-e9f1032dda82"
+                "authorization: Bearer x]vf4yp0yf"
             ),
         ));
 
@@ -61,9 +59,7 @@ class Api_model extends CI_Model
             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
             CURLOPT_CUSTOMREQUEST => "GET",
             CURLOPT_HTTPHEADER => array(
-                "authorization: Bearer x]vf4yp0yf",
-                "cache-control: no-cache",
-                "postman-token: bd02a435-f29a-13b3-09a1-c21e4e6db4f4"
+                "authorization: Bearer x]vf4yp0yf"
             ),
         ));
 
@@ -104,9 +100,7 @@ class Api_model extends CI_Model
             CURLOPT_POSTFIELDS => json_encode($param),
             CURLOPT_HTTPHEADER => array(
                 "authorization: Bearer x]vf4yp0yf",
-                "cache-control: no-cache",
                 "content-type: application/json",
-                "postman-token: bbf9c0b9-0a4a-905c-e5e4-2f2e98ec5bb2"
             ),
         ));
 

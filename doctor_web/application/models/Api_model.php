@@ -34,9 +34,7 @@ class Api_model extends CI_Model
             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
             CURLOPT_CUSTOMREQUEST => "GET",
             CURLOPT_HTTPHEADER => array(
-                "authorization: Bearer x]vf4yp0yf",
-                "cache-control: no-cache",
-                "postman-token: c98378f1-0492-9021-6b11-80dde35d13a3"
+                "authorization: Bearer x]vf4yp0yf"
             ),
         ));
 
@@ -62,9 +60,7 @@ class Api_model extends CI_Model
             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
             CURLOPT_CUSTOMREQUEST => "GET",
             CURLOPT_HTTPHEADER => array(
-                "authorization: Bearer x]vf4yp0yf",
-                "cache-control: no-cache",
-                "postman-token: bd02a435-f29a-13b3-09a1-c21e4e6db4f4"
+                "authorization: Bearer x]vf4yp0yf"
             ),
         ));
 
@@ -107,9 +103,7 @@ class Api_model extends CI_Model
             CURLOPT_POSTFIELDS => json_encode($param),
             CURLOPT_HTTPHEADER => array(
                 "authorization: Bearer x]vf4yp0yf",
-                "cache-control: no-cache",
-                "content-type: application/json",
-                "postman-token: ca2cc671-de41-4e54-6c85-e95e1798df28"
+                "content-type: application/json"
             ),
         ));
 
@@ -139,9 +133,7 @@ class Api_model extends CI_Model
             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
             CURLOPT_CUSTOMREQUEST => "GET",
             CURLOPT_HTTPHEADER => array(
-                "authorization: Bearer x]vf4yp0yf",
-                "cache-control: no-cache",
-                "postman-token: 66c0b6b1-33a2-9031-1d8e-60de63851b36"
+                "authorization: Bearer x]vf4yp0yf"
             ),
         ));
 
@@ -171,9 +163,7 @@ class Api_model extends CI_Model
             CURLOPT_POSTFIELDS => json_encode($_POST),
             CURLOPT_HTTPHEADER => array(
                 "authorization: Bearer x]vf4yp0yf",
-                "cache-control: no-cache",
                 "content-type: application/json",
-                "postman-token: 0d333b9f-13cc-f25c-82ef-a37628a808e7"
             ),
         ));
 

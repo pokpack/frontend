@@ -32,9 +32,7 @@ class Api_model extends CI_Model
             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
             CURLOPT_CUSTOMREQUEST => "GET",
             CURLOPT_HTTPHEADER => array(
-                "authorization: Bearer x]vf4yp0yf",
-                "cache-control: no-cache",
-                "postman-token: a5104ee1-66f2-6985-2b7e-f1d258adcf37"
+                "authorization: Bearer x]vf4yp0yf"
             ),
         ));
 
@@ -60,9 +58,7 @@ class Api_model extends CI_Model
             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
             CURLOPT_CUSTOMREQUEST => "GET",
             CURLOPT_HTTPHEADER => array(
-                "authorization: Bearer x]vf4yp0yf",
-                "cache-control: no-cache",
-                "postman-token: bd02a435-f29a-13b3-09a1-c21e4e6db4f4"
+                "authorization: Bearer x]vf4yp0yf"
             ),
         ));
 

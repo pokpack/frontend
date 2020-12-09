@@ -43,8 +43,6 @@ class Api extends CI_Controller
             CURLOPT_CUSTOMREQUEST => "GET",
             CURLOPT_HTTPHEADER => array(
                 "authorization: Bearer x]vf4yp0yf",
-                "cache-control: no-cache",
-                "postman-token: 008caa61-554a-6da0-0dac-c9055e295508"
             ),
         ));
 
@@ -81,9 +79,7 @@ class Api extends CI_Controller
             CURLOPT_POSTFIELDS => json_encode($_POST),
             CURLOPT_HTTPHEADER => array(
                 "authorization: Bearer x]vf4yp0yf",
-                "cache-control: no-cache",
                 "content-type: application/json",
-                "postman-token: 75c76a80-be0e-b7a7-4ce3-5dcce07faefc"
             ),
         ));
         //
