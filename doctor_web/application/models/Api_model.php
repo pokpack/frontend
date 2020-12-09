@@ -97,7 +97,6 @@ class Api_model extends CI_Model
         $emr = $_POST[emr];
         $url = getenv('EMR_API_URL') . "/api/" . $hn . "/cure/" . $emr;
         curl_setopt_array($curl, array(
-            CURLOPT_PORT => "3001",
             CURLOPT_URL => $url,
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING => "",
@@ -132,7 +131,6 @@ class Api_model extends CI_Model
         $curl = curl_init();
         $url = getenv('EMR_API_URL') . "/api/diagnoses";
         curl_setopt_array($curl, array(
-            CURLOPT_PORT => "3001",
             CURLOPT_URL => $url,
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING => "",
@@ -163,7 +161,6 @@ class Api_model extends CI_Model
         $emr = $_POST[emr];
         $url = getenv('EMR_API_URL') . "/api/" . $hn . "/diagnose/" . $emr;
         curl_setopt_array($curl, array(
-            CURLOPT_PORT => "3001",
             CURLOPT_URL => $url,
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING => "",

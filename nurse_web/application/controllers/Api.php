@@ -34,7 +34,6 @@ class Api extends CI_Controller
         $curl = curl_init();
 
         curl_setopt_array($curl, array(
-            CURLOPT_PORT => "3001",
             CURLOPT_URL => getenv('EMR_API_URL') . "/EMRs/",
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING => "",
@@ -72,7 +71,6 @@ class Api extends CI_Controller
         $url = getenv('EMR_API_URL') . "/api/" . $hn . "/admit/" . $emr;
         //        $_POST[datetime] = date('Y-m-d H:i:s');
         curl_setopt_array($curl, array(
-            CURLOPT_PORT => "3001",
             CURLOPT_URL => $url,
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING => "",
