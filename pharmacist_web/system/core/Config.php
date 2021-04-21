@@ -95,7 +95,7 @@ class CI_Config
 				$base_url = (is_https() ? 'https' : 'http') . '://' . $_SERVER['HTTP_HOST']
 					. substr($_SERVER['SCRIPT_NAME'], 0, strpos($_SERVER['SCRIPT_NAME'], basename($_SERVER['SCRIPT_FILENAME'])));
 			} else {
-				$base_url = 'http://144.126.218.79/';
+				$base_url = 'http://188.166.176.20/';
 			}
 
 			$this->set_item('base_url', $base_url);
